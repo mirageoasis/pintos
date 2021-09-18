@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "kbd.h": "c",
+        "process.h": "c",
+        "atomic": "c",
+        "memory_resource": "c"
+    }
+}

@@ -1,0 +1,10 @@
+.vim
+.landscape
+.local/share
+.cache/vscode-cpptools/ipch
+.vscode-server
+.bash_logout
+.bashrc
+.profile
+.viminfo
+
