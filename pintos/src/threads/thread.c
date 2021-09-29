@@ -1,4 +1,3 @@
-#include "threads/thread.h"
 #include <debug.h>
 #include <stddef.h>
 #include <random.h>
@@ -11,6 +10,7 @@
 #include "threads/switch.h"
 #include "threads/synch.h"
 #include "threads/vaddr.h"
+#include "threads/thread.h"
 #ifdef USERPROG
 #include "userprog/process.h"
 #endif
@@ -97,6 +97,9 @@ void thread_init(void)
   init_thread(initial_thread, "main", PRI_DEFAULT);
   initial_thread->status = THREAD_RUNNING;
   initial_thread->tid = allocate_tid();
+
+  //추가한 코드
+  initial_thread->parent = NULL;
 }
 
 /* Starts preemptive thread scheduling by enabling interrupts.
@@ -106,8 +109,9 @@ void thread_start(void)
   /* Create the idle thread. */
   struct semaphore idle_started;
   sema_init(&idle_started, 0);
+  //printf("thread start IDLE create process!\n");
   thread_create("idle", PRI_MIN, idle, &idle_started);
-
+  //printf("thread start IDLE create process ends!\n");
   /* Start preemptive thread scheduling. */
   intr_enable();
 
@@ -165,6 +169,7 @@ tid_t thread_create(const char *name, int priority,
   struct kernel_thread_frame *kf;
   struct switch_entry_frame *ef;
   struct switch_threads_frame *sf;
+  enum intr_level old_level;
   tid_t tid;
 
   ASSERT(function != NULL);
@@ -177,7 +182,9 @@ tid_t thread_create(const char *name, int priority,
   /* Initialize thread. */
   init_thread(t, name, priority);
   tid = t->tid = allocate_tid();
+  t->parent = thread_current(); /*부모 초기화*/
 
+  old_level = intr_disable();
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame(t, sizeof *kf);
   kf->eip = NULL;
@@ -193,6 +200,9 @@ tid_t thread_create(const char *name, int priority,
   sf->eip = switch_entry;
   sf->ebp = 0;
 
+  //list_push_back(&(thread_current()->child), &(t->allelem)); // 부모 리스트에 자식 리스트 삽입
+  list_push_back(&(thread_current()->child), &(t->child_elem));
+  intr_set_level(old_level);
   /* Add to run queue. */
   thread_unblock(t);
 
@@ -271,18 +281,24 @@ tid_t thread_tid(void)
    returns to the caller. */
 void thread_exit(void)
 {
+  //printf("\nveil out of current thread!\n");
   ASSERT(!intr_context());
 
 #ifdef USERPROG
   process_exit();
 #endif
-
+  //printf("veli out of current thread1!\n");
   /* Remove thread from all threads list, set our status to dying,
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable();
+  //printf("veil out of current thread2!\n");
+  thread_current()->end_true = true;
   list_remove(&thread_current()->allelem);
+  sema_up(&(thread_current()->sema_exit));
+  //sema_up(&(thread_current()->parent->sema_load)); // 테스트 용도
   thread_current()->status = THREAD_DYING;
+  //printf("veli out of current thread3!\n");
   schedule();
   NOT_REACHED();
 }
@@ -450,6 +466,13 @@ init_thread(struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *)t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
+
+  t->load_true = false; /*메모리 적재 여부 초기화*/
+  t->end_true = false;
+  t->exit_status = 0;
+  list_init(&(t->child));
+  sema_init(&(t->sema_exit), 0); /*exit semaphore 초기화*/
+  sema_init(&(t->sema_load), 0); /*load seamphore 초기화*/
 
   old_level = intr_disable();
   list_push_back(&all_list, &t->allelem);

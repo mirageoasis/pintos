@@ -1,4 +1,3 @@
-#include "userprog/process.h"
 #include <debug.h>
 #include <inttypes.h>
 #include <round.h>
@@ -8,6 +7,7 @@
 #include "userprog/gdt.h"
 #include "userprog/pagedir.h"
 #include "userprog/tss.h"
+#include "userprog/process.h"
 #include "filesys/directory.h"
 #include "filesys/file.h"
 #include "filesys/filesys.h"
@@ -29,7 +29,8 @@ tid_t process_execute(const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
-
+  char *cmd;
+  char temp_file[128], *dummy_ptr;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
@@ -37,8 +38,18 @@ tid_t process_execute(const char *file_name)
     return TID_ERROR;
   strlcpy(fn_copy, file_name, PGSIZE);
 
+  strlcpy(temp_file, file_name, PGSIZE);
+  cmd = strtok_r(temp_file, " ", &dummy_ptr);
+  if (filesys_open(cmd) == NULL)
+  {
+    return -1;
+  }
   /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create(file_name, PRI_DEFAULT, start_process, fn_copy);
+  //printf("function process execute start!\n");
+  tid = thread_create(cmd, PRI_DEFAULT, start_process, fn_copy);
+  //sema_down(&(thread_current()->sema_load));
+  //printf("function process execute end!\n");
+
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
   return tid;
@@ -52,19 +63,31 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-
+  struct thread *now = thread_current();
   /* Initialize interrupt frame and load executable. */
   memset(&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+  //printf("load started!\n");
   success = load(file_name, &if_.eip, &if_.esp);
-
-  /* If load failed, quit. */
+  sema_up(&(now->sema_load));
   palloc_free_page(file_name);
-  if (!success)
-    thread_exit();
+  //printf("the stack pointer of start_process is : %X\n", if_.esp);
+  //hex_dump(if_.esp, if_.esp, 100, true);
 
+  if (!success) /*if load fails the n thread_exit*/
+  {
+    //printf("didn't make load successful\n");
+    now->load_true = false;
+    thread_exit();
+  }
+  else
+  {
+    //printf("did make load successful\n");
+    now->load_true = true;
+    //sema_down(&now->sema_load);
+  }
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
@@ -89,17 +112,36 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
    does nothing. */
 int process_wait(tid_t child_tid UNUSED)
 {
-  while (1)
-  {
-  }
+  struct thread *child_thread = get_child_process(child_tid);
+  struct thread *now = thread_current();
+  int exit_code;
+  //printf("process_wait started!\n");
+  // while (1)
+  // {
+  // }
+  //return -1;
 
-  return -1;
+  if (child_thread == NULL)
+    return -1;
+
+  if (child_thread->status == THREAD_DYING || child_thread->end_true == true)
+  {
+    //printf("end with senario 1\n");
+    return -1;
+  }
+  //printf("end with senario 2\n");
+  sema_up(&(now->sema_load));
+  sema_down(&(child_thread->sema_exit));
+  //list_remove(&(child_thread->child_elem));
+  //printf("now return exit status with value %d\n", now->exit_status);
+  return now->exit_status;
 }
 
 /* Free the current process's resources. */
 void process_exit(void)
 {
   struct thread *cur = thread_current();
+  struct list_elem *e;
   uint32_t *pd;
 
   /* Destroy the current process's page directory and switch back
@@ -118,6 +160,8 @@ void process_exit(void)
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
+  //sema_up(&(cur->sema_load));
+  //sema_down(&(cur->sema_exit));
 }
 
 /* Sets up the CPU for running user code in the current
@@ -208,7 +252,7 @@ static bool load_segment(struct file *file, off_t ofs, uint8_t *upage,
    Stores the executable's entry point into *EIP
    and its initial stack pointer into *ESP.
    Returns true if successful, false otherwise. */
-bool load(const char *file_name, void (**eip)(void), void **esp)
+bool load(const char *file_name_, void (**eip)(void), void **esp)
 {
   struct thread *t = thread_current();
   struct Elf32_Ehdr ehdr;
@@ -216,7 +260,26 @@ bool load(const char *file_name, void (**eip)(void), void **esp)
   off_t file_ofs;
   bool success = false;
   int i;
-  printf("===================load is now active with process %s================\n", file_name);
+  //printf("===================load is now active with process %s================\n", file_name);
+
+  /*parse the file name and put them into filesys*/
+  char file_name[128];
+  char *now_ptr[128];      // 문자열 저장 배열
+  uint32_t stack_ptr[128]; //아래 stack 에서 주소를 저장하기 위한 배열
+  char *dump_ptr;
+  int cnt = 0;
+  //printf("the command is: %s\n", file_name);
+  strlcpy(file_name, file_name_, strlen(file_name_) + 1);
+  //file_name[strlen(file_name_)] = '\0';
+  now_ptr[cnt++] = strtok_r(file_name, " ", &dump_ptr);
+  //printf("%s\n", now_ptr[cnt - 1]);
+  while (now_ptr[cnt - 1] != NULL)
+  {
+    now_ptr[cnt++] = strtok_r(NULL, " ", &dump_ptr);
+    //printf("the push is: %s\n", now_ptr[cnt - 1]);
+  }
+  cnt -= 1; // 마지막 null때문에 한번더 늘어나게 된다.
+
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create();
   if (t->pagedir == NULL)
@@ -224,10 +287,10 @@ bool load(const char *file_name, void (**eip)(void), void **esp)
   process_activate();
 
   /* Open executable file. */
-  file = filesys_open(file_name);
+  file = filesys_open(now_ptr[0]);
   if (file == NULL)
   {
-    printf("load: %s: open failed\n", file_name);
+    printf("load: %s: open failed!\n", now_ptr[0]);
     goto done;
   }
 
@@ -300,9 +363,38 @@ bool load(const char *file_name, void (**eip)(void), void **esp)
   if (!setup_stack(esp))
     goto done;
 
+  //printf("the count is %d\n", cnt);
+
+  for (int i = cnt - 1; i >= 0; i--)
+  {
+    unsigned int length = strlen(now_ptr[i]) + 1; // 명령어의 길이
+    (*esp) -= length;                             // 길이만큼 stack 늘려주기
+    stack_ptr[i] = (uint32_t)(*esp);              // stack 에 저장해줄 명령어들의 주소를 저장한다.
+    memcpy(*esp, now_ptr[i], length);
+    //printf("pushing: %s at %x\n", now_ptr[i], *(esp));
+    //printf("the address is %X\n", *(esp));
+  }                                         // stack에 문자열 밀어넣는 for 문
+  (*esp) = ROUND_DOWN((uint32_t)(*esp), 4); // word-align을 하기
+  (*esp) -= sizeof(char *);                 // sentinal pointer
+
+  for (i = cnt - 1; i >= 0; i--) // 주소 저장
+  {
+    //printf("the argv address is %x\n", *esp);
+    *esp -= sizeof(char *);                      //char*만큼 스택 포인터 빼면 시작 주소
+    **(uint32_t **)esp = &stack_ptr[i];          // 주소 저장
+    memcpy(*esp, &stack_ptr[i], sizeof(char *)); //주소 저장
+  }
+
+  *esp -= sizeof(uint32_t);                     // stack_pointer 주소의 시작점 만큼 주소 이동
+  **(uint32_t **)esp = *esp + sizeof(uint32_t); // 그전 메모리주소 복사
+
+  *esp -= sizeof(int);      // argument 숫자의 개수 push하기
+  **(uint32_t **)esp = cnt; // cnt  값 넣기기
+  (*esp) -= 4;              // return address 넣어주기
   /* Start address. */
   *eip = (void (*)(void))ehdr.e_entry;
-
+  //hex_dump((int)*esp, *esp, 100, true);
+  //printf("the stack pointer of process.c is : %X\n", *esp);
   success = true;
 
 done:
@@ -456,4 +548,35 @@ install_page(void *upage, void *kpage, bool writable)
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
   return (pagedir_get_page(t->pagedir, upage) == NULL && pagedir_set_page(t->pagedir, upage, kpage, writable));
+}
+
+struct thread *get_child_process(int pid)
+{
+  /* 자식 리스트에 접근하여 프로세스 디스크립터 검색 */
+  /* 해당 pid가 존재하면 프로세스 디스크립터 반환 */
+  /* 리스트에 존재하지 않으면 NULL 리턴 */
+  struct thread *thread_now = thread_current();
+  struct thread *thread_child;
+  int cnt = 0;
+  struct list_elem *temp = list_begin(&(thread_now->child));
+  while (cnt < list_size(&(thread_now->child)))
+  {
+    thread_child = list_entry(temp, struct thread, child_elem);
+
+    if (thread_child->tid == pid)
+    {
+      return thread_child;
+    }
+    temp = list_next(temp); //다음 원소로 이동
+    cnt++;                  // 카운트 늘려주기
+  }
+
+  return NULL;
+}
+
+void remove_child_process(struct thread *cp)
+{
+  /* 자식 리스트에서 제거*/
+  /* 프로세스 디스크립터 메모리 해제 */
+  struct thread *now = thread_current();
 }

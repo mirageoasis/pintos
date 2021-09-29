@@ -305,7 +305,7 @@ run_actions(char **argv)
     void (*function)(char **argv); /* Function to execute action. */
   };
 
-  /* Table of supported actions. */
+  /* Tab le of supported actions. */
   static const struct action actions[] =
       {
           {"run", 2, run_task},

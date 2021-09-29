@@ -3,6 +3,24 @@
         "kbd.h": "c",
         "process.h": "c",
         "atomic": "c",
-        "memory_resource": "c"
+        "memory_resource": "c",
+        "round.h": "c",
+        "thread.h": "c",
+        "syscall.h": "c",
+        "syscall-nr.h": "c",
+        "debug.h": "c",
+        "stdio.h": "c",
+        "cookie_io_functions_t.h": "c",
+        "input.h": "c",
+        "thread": "c",
+        "array": "c",
+        "deque": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "unordered_set": "c",
+        "vector": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "cstdlib": "c"
     }
 }
