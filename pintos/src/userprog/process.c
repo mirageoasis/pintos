@@ -47,7 +47,6 @@ tid_t process_execute(const char *file_name)
   /* Create a new thread to execute FILE_NAME. */
   //printf("function process execute start!\n");
   tid = thread_create(cmd, PRI_DEFAULT, start_process, fn_copy);
-  //sema_down(&(thread_current()->sema_load));
   //printf("function process execute end!\n");
 
   if (tid == TID_ERROR)
@@ -71,7 +70,6 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
   if_.eflags = FLAG_IF | FLAG_MBS;
   //printf("load started!\n");
   success = load(file_name, &if_.eip, &if_.esp);
-  sema_up(&(now->sema_load));
   palloc_free_page(file_name);
   //printf("the stack pointer of start_process is : %X\n", if_.esp);
   //hex_dump(if_.esp, if_.esp, 100, true);
@@ -86,7 +84,6 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
   {
     //printf("did make load successful\n");
     now->load_true = true;
-    //sema_down(&now->sema_load);
   }
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -114,7 +111,6 @@ int process_wait(tid_t child_tid UNUSED)
 {
   struct thread *child_thread = get_child_process(child_tid);
   struct thread *now = thread_current();
-  int exit_code;
   //printf("process_wait started!\n");
   // while (1)
   // {
@@ -130,9 +126,8 @@ int process_wait(tid_t child_tid UNUSED)
     return -1;
   }
   //printf("end with senario 2\n");
-  sema_up(&(now->sema_load));
-  sema_down(&(child_thread->sema_exit));
-  //list_remove(&(child_thread->child_elem));
+  sema_down(&(child_thread->sema_wait));
+  sema_up(&(child_thread->sema_exit));
   //printf("now return exit status with value %d\n", now->exit_status);
   return now->exit_status;
 }
@@ -160,8 +155,6 @@ void process_exit(void)
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
-  //sema_up(&(cur->sema_load));
-  //sema_down(&(cur->sema_exit));
 }
 
 /* Sets up the CPU for running user code in the current

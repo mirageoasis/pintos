@@ -27,10 +27,10 @@ syscall_handler(struct intr_frame *f UNUSED)
 {
   //printf("wowowo\n");
   //printf("system call! gogogo\n");
-  //printf("syscall num : %d\n", *(uint32_t *)(f->esp));
+  printf("syscall num : %d\n", *(uint32_t *)(f->esp));
   //printf("the stack pointer of syscall.c is : %X\n", (f->esp + 4));
   //f->esp = 0xBFFFFFE0;
-  //hex_dump(f->esp, f->esp, 100, 1);
+  hex_dump(f->esp, f->esp, 100, 1);
   //printf("fd: %hu, size: %i\n", *(uint32_t *)0xBFFFFFE0 + 4);
   //printf("%d, %s, %d\n", (int)*(head + 4), (const void *)*(head + 8), (unsigned)*(head + 12));
 
@@ -112,8 +112,8 @@ void exit(int status)
   struct thread *now = thread_current();
   now->end_true = true;
   now->exit_status = status;
+  //list_remove(&(now->child_elem));
   printf("%s: exit(%d)\n", now->name, now->exit_status);
-  list_remove(&(now->child_elem));
 
   if (now->parent)
     now->parent->exit_status = now->exit_status;
@@ -164,23 +164,22 @@ int write(int fd, const void *buffer, unsigned size)
 
 pid_t exec(const char *cmd_line)
 {
-  //printf("execute your area\n");
+  printf("execute your area\n");
   char temp_name[128];
   int i = 0;
   for (int i = 0; cmd_line[i] != '\0' && cmd_line[i] != ' '; i++)
   {
   }
   strlcpy(temp_name, cmd_line, i);
+  printf("the cmd is %s\n", cmd_line);
   temp_name[i] = '\0';
-
+  printf("the execute is %s\n", cmd_line);
+  printf("the temp_name is %s\n", temp_name);
   if (filesys_open(temp_name) == NULL)
   {
     return -1;
   }
-  printf("the execute is %s\n", temp_name);
   tid_t ret = process_execute(temp_name);
-  //process_wait(ret);
-  sema_down(&(thread_current()->sema_load));
 
   return (pid_t)ret;
 }

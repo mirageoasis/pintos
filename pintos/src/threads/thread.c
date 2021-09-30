@@ -293,11 +293,12 @@ void thread_exit(void)
      when it calls thread_schedule_tail(). */
   intr_disable();
   //printf("veil out of current thread2!\n");
+  sema_up(&(thread_current()->sema_wait));
+  sema_down(&(thread_current()->sema_exit));
   thread_current()->end_true = true;
-  list_remove(&thread_current()->allelem);
-  sema_up(&(thread_current()->sema_exit));
-  //sema_up(&(thread_current()->parent->sema_load)); // 테스트 용도
   thread_current()->status = THREAD_DYING;
+  list_remove(&thread_current()->allelem);
+  list_remove(&(thread_current()->child_elem));
   //printf("veli out of current thread3!\n");
   schedule();
   NOT_REACHED();
@@ -472,6 +473,7 @@ init_thread(struct thread *t, const char *name, int priority)
   t->exit_status = 0;
   list_init(&(t->child));
   sema_init(&(t->sema_exit), 0); /*exit semaphore 초기화*/
+  sema_init(&(t->sema_wait), 0); /*exit semaphore 초기화*/
   sema_init(&(t->sema_load), 0); /*load seamphore 초기화*/
 
   old_level = intr_disable();
