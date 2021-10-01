@@ -1,8 +1,9 @@
 #ifndef USERPROG_SYSCALL_H
 #define USERPROG_SYSCALL_H
-typedef int pid_t;
+#include "lib/user/syscall.h"
 
 void syscall_init(void);
-void exit(int status);
+int fibonacci(int n);
+int max_of_four_int(int a, int b, int c, int d);
 
 #endif /* userprog/syscall.h */

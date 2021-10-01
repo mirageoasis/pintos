@@ -47,6 +47,7 @@ tid_t process_execute(const char *file_name)
   /* Create a new thread to execute FILE_NAME. */
   //printf("function process execute start!\n");
   tid = thread_create(cmd, PRI_DEFAULT, start_process, fn_copy);
+  //sema_down(&(thread_current()->sema_load));
   //printf("function process execute end!\n");
 
   if (tid == TID_ERROR)
@@ -70,6 +71,7 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
   if_.eflags = FLAG_IF | FLAG_MBS;
   //printf("load started!\n");
   success = load(file_name, &if_.eip, &if_.esp);
+  sema_up(&(now->sema_load));
   palloc_free_page(file_name);
   //printf("the stack pointer of start_process is : %X\n", if_.esp);
   //hex_dump(if_.esp, if_.esp, 100, true);
@@ -84,6 +86,7 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
   {
     //printf("did make load successful\n");
     now->load_true = true;
+    //sema_down(&now->sema_load);
   }
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -111,6 +114,7 @@ int process_wait(tid_t child_tid UNUSED)
 {
   struct thread *child_thread = get_child_process(child_tid);
   struct thread *now = thread_current();
+  int exit_code;
   //printf("process_wait started!\n");
   // while (1)
   // {
@@ -126,8 +130,9 @@ int process_wait(tid_t child_tid UNUSED)
     return -1;
   }
   //printf("end with senario 2\n");
-  sema_down(&(child_thread->sema_wait));
-  sema_up(&(child_thread->sema_exit));
+  sema_up(&(now->sema_load));
+  sema_down(&(child_thread->sema_exit));
+  //list_remove(&(child_thread->child_elem));
   //printf("now return exit status with value %d\n", now->exit_status);
   return now->exit_status;
 }
@@ -155,6 +160,8 @@ void process_exit(void)
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
+  //sema_up(&(cur->sema_load));
+  //sema_down(&(cur->sema_exit));
 }
 
 /* Sets up the CPU for running user code in the current
@@ -358,24 +365,24 @@ bool load(const char *file_name_, void (**eip)(void), void **esp)
 
   //printf("the count is %d\n", cnt);
 
-  for (int i = cnt - 1; i >= 0; i--)
+  for (int j = cnt - 1; j >= 0; j--)
   {
-    unsigned int length = strlen(now_ptr[i]) + 1; // 명령어의 길이
+    unsigned int length = strlen(now_ptr[j]) + 1; // 명령어의 길이
     (*esp) -= length;                             // 길이만큼 stack 늘려주기
-    stack_ptr[i] = (uint32_t)(*esp);              // stack 에 저장해줄 명령어들의 주소를 저장한다.
-    memcpy(*esp, now_ptr[i], length);
+    stack_ptr[j] = (uint32_t)(*esp);              // stack 에 저장해줄 명령어들의 주소를 저장한다.
+    memcpy(*esp, now_ptr[j], length);
     //printf("pushing: %s at %x\n", now_ptr[i], *(esp));
     //printf("the address is %X\n", *(esp));
   }                                         // stack에 문자열 밀어넣는 for 문
   (*esp) = ROUND_DOWN((uint32_t)(*esp), 4); // word-align을 하기
   (*esp) -= sizeof(char *);                 // sentinal pointer
 
-  for (i = cnt - 1; i >= 0; i--) // 주소 저장
+  for (int j = cnt - 1; j >= 0; j--) // 주소 저장
   {
     //printf("the argv address is %x\n", *esp);
     *esp -= sizeof(char *);                      //char*만큼 스택 포인터 빼면 시작 주소
-    **(uint32_t **)esp = &stack_ptr[i];          // 주소 저장
-    memcpy(*esp, &stack_ptr[i], sizeof(char *)); //주소 저장
+    **(uint32_t **)esp = &stack_ptr[j];          // 주소 저장
+    memcpy(*esp, &stack_ptr[j], sizeof(char *)); //주소 저장
   }
 
   *esp -= sizeof(uint32_t);                     // stack_pointer 주소의 시작점 만큼 주소 이동

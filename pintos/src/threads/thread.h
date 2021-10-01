@@ -12,16 +12,8 @@ enum thread_status
    THREAD_RUNNING, /* Running thread. */
    THREAD_READY,   /* Not running but ready to run. */
    THREAD_BLOCKED, /* Waiting for an event to trigger. */
-   THREAD_DYING,   /* About to be destroyed. */
+   THREAD_DYING    /* About to be destroyed. */
 };
-
-// enum end_status
-// {
-//    THREAD_RUNNING, /* Running thread. */
-//    THREAD_READY,   /* Not running but ready to run. */
-//    THREAD_BLOCKED, /* Waiting for an event to trigger. */
-//    THREAD_DYING    /* About to be destroyed. */
-// };
 
 /* Thread identifier type.
    You can redefine this to whatever type you like. */
@@ -98,23 +90,22 @@ struct thread
    uint8_t *stack;            /* Saved stack pointer. */
    int priority;              /* Priority. */
    struct list_elem allelem;  /* List element for all threads list. */
-                              /* Shared between thread.c and synch.c. */
-   struct list_elem elem;     /* List element. ->sibling */
-   //NEW ELEMENT
-   struct thread *parent;       /*parent addresss*/
-   struct list_elem child_elem; /*child address for head and tail*/
-   struct list child;           /*child list!*/
-   bool load_true;              /*Load status true if load with */
-   bool end_true;               /*end status true if it end with normal state*/
-   int exit_status;             /*exit for reason*/
-   struct semaphore sema_load;  /*semaphore for work*/
-   struct semaphore sema_wait;
-   struct semaphore sema_exit;
+
+   /* Shared between thread.c and synch.c. */
+   struct list_elem elem; /* List element. */
 
 #ifdef USERPROG
    /* Owned by userprog/process.c. */
    uint32_t *pagedir; /* Page directory. */
 #endif
+   struct thread *parent;
+   struct list_elem child_elem;
+   struct list child;
+   bool load_true;
+   bool end_true;
+   int exit_status;
+   struct semaphore exit_sema;
+   struct semaphore load_sema;
 
    /* Owned by thread.c. */
    unsigned magic; /* Detects stack overflow. */

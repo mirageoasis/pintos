@@ -1,312 +1,3 @@
-cd hello
-ls -a
-rm hello
-mkdir test
-cd test
-code .
-ls -a
-vi testapp.c
-sudo apt-get install clang-formatter
-ls -a
-gcc
-sudo apt install gcc
-sudo apt-get install build-essential
-gcc
-g++
-g++ help
-g++ --help
-ls -a
-vi .vscode-server
-g++ test
-gcc test
-vi test
-cd test
-gcc Untitled-1.c
-vi Untitled-1.c 
-gcc Untitled-1.c
-./a.out
-vi Untitled-1.c 
-sudo apt=get install python3
-sudo apt-get install python3
-python3
-ls -as
-ls -a
-cd test
-code .
-clear && echo 0 > "/home/kimhw0820/.vscode-server/extensions/ms-vsliveshare.vsliveshare-1.0.4761/out/terminal-exit-code-700759" && "/usr/bin/bash"  "/home/kimhw0820/.vscode-server/extensions/ms-vsliveshare.vsliveshare-1.0.4761/out/deps/linux-prereqs.sh" || echo $? > "/home/kimhw0820/.vscode-server/extensions/ms-vsliveshare.vsliveshare-1.0.4761/out/terminal-exit-code-700759" && exit 0
-sudo apt-get install qemu
-vi ~/.bashrc
-code .
-ls -a
-vi setting.json
-vi settings.json
-ls -a
-code ,
-code .
-source ~/.bashrc
-cd ~/pintos/src/threads
-make
-../utils/pintos -v -- -q run alarm-multiple
-sudo ../utils/pintos -v -- -q run alarm-multiple
-cd ..
-cd utils
-pintos -v -- -q run alarm-multiple
-sudo pintos -v -- -q run alarm-multiple
-cat /proc/cpuinfo | grep --color -E 'vmx|svm'
-grep -cw vmx /proc/cpuinfo
-apt install -y qemu-kvm libvirt-bin bridge-utils ubuntu-vm-builder virt-manager
-sudo apt install -y qemu-kvm libvirt-bin bridge-utils ubuntu-vm-builder virt-manager
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt install qemu-kvm ovmf bridge-utils
-source ~/.bahsrc
-source ~./bahsrc
-ls -a
-source /.bashrc
-qemu-system-x86_64
-kvm
-kvm -m
-source ~/.bashrc
-cd ~/pintos/src/threads
-make
-../utils/pintos -v -- -q run alarm-multiple
-sudo ../utils/pintos -v -- -q run alarm-multiple
-cd ..
-ls 0a
-ls -a
-cd utils
-ls 0a
-ls -a
-pintos -v -- -q run alarm-multiple
-sudo pintos -v -- -q run alarm-multiple
-pintos -v -- -q run alarm-multiple
-chmod pintos 777
-chmod --help
-chmod pintos
-ls -a
-vi pintos
-pintos -v -- -q run alarm-multiple
-ls -a
-ls -l
-chmod pintos 777
-chmod 777 pintos
-pintos -v -- -q run alarm-multiple
-sudo pintos -v -- -q run alarm-multiple
-pintos -v -- -q run alarm-multiple
-cd ..
-cd..
-cd ..
-sudo apt-get install qemu
-vi ~/.bashrc
-pwd
-vi ~/.bashrc
-source ~/.bashrc
-cd ~/pintos/src/threads
-make
-ls -a
-vi build
-../utils/pintos -v -- -q run alarm-multiple
-code .
-pintos --feilsys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-ls -a
-cd pintos
-cd src
-cd threads
-../utils/pintos -v -- -q run alarm-multiple
-cd ..
-ls -a
-cd examples
-make
-cd ..
-cd userprog
-make
-cd ..
-cd examples
-make
-cd ..
-cd userprog
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd pintos
-ls -a
-cd src
-ls -a
-cd threads
-make
-cd ..
-ls -a
-cd upserprog
-cd userprog
-make
-cd ..
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd threads
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd pintos
-ls -a
-cd src
-cd threads
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-ls 0a
-ls -a
-cd userprog
-make
-cd ..
-cd threads
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd examples
-cd ..
-cd examples
-make
-cd ..
-cd threads/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-cd examples/
-make
-cd ..
-cd userprog/
-make
-cd ..
-cd userprog/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd pintos
-ls -a
-cd src
-ls 0a
-ls -a
-cd userprog
-make
-cd ..
-cd examples
-make
-cd ...
-cd ..
-cd userprog/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-git reset
-cd ..
-code. 
-code .
-git clone
-git clone > git remote --verbose
-git clone https://github.com/mirageoasis/pintos.git
-git remote add origin https://github.com/mirageoasis/pintos.git
-git push
-git add --all
-git add -all
-git add --all
-ls -a
-cd pintos
-ls -a
-git add --all
-cd pintos
-ls 0a
-ls -a
-rm .git
-rm -rf .git
-ls -a
-cd ..
-ls -a
-rm -rf pintos
-cd ..
-git add --all
-git commit -m "first"
-git config --global user.email "kimhw0820@naver.com"
-git commit -m "first"
-git config --global user.email "kimhw0820@naver.com"
-git config --global user.name "kimhw0820"
-git commit -m "first"
-git push
-git push --set-ipstream origin master
-git push --set-upstream origin master
-git push --set-ipstream origin master
-git push
-git push --set-upstream origin master
-ls -a
-cd pintos
-cd ..
-ls -a
-vi .gitignore
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-cd pintos
-cd src
-ls -a
-cd tests
-make
-cd ..
-ls 0a
-ls -a
-cd examples/
-make
-cd ..
-cd threads/
-make
-cd ..
-cd examples/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
 make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
 make
@@ -1998,3 +1689,312 @@ pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
 cd ..
 cd //
 cd home/
+source ~/.bashrc
+cd pintos/
+cd src/
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+chmod -R 777 pintos
+cd pintos/
+cd src/
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make clean
+cd ..
+cd thread
+make clean
+make
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+cd pintos/
+cd src/
+cd threads/
+pintos -- run alarm-multiple
+cd ..
+cd userprog/
+make
+pintos -- run alarm-multiple
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd ..
+cd examples
+cd src
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg < /dev/null 2> tests/userprog/exec-arg.errt
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg eex
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg eeexec-args
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+maKE
+make'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+backtrace
+backtrace kernel.o
+backtrace make
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+git add --all
+git commit -m "maintainance"
+git push
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make chekc
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd pintos/
+cd serc
+cd src
+cd userprog/
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+make check
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-once -a exec-once
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-once -a exec-once -p tests/userprog/child-simple -a child-simple -- -q  -f run exec-once
+pintos --filesys-size=2 -p ../examples/exec -a exec -- -f -q run 'exec child-args'
+pintos --filesys-size=2 -p ../tests/userprog/exec-once -a exec-once -- -f -q run 'exec child-simple'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make clean
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+git reset
+cd ..
+chmod -R 777 pintos
+cd pintos/
+cd src/
+cd ..
+cd ex
+cd src
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+git reset
+make
+cd ..
+cd src/
+cd threads/
+make
+cd ..
+cd ex
+cd sr
+cd src/
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd thr
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+chmod pintos -R 777
+chmod -R 777 pintos
+cd pintos/
+cd src
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+ake
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+git reset
+cd ..
+chmod -R 777 pintos
+cd pintos/
+cd src
+cd examples/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check

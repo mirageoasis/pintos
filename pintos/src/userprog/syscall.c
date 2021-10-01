@@ -30,7 +30,7 @@ syscall_handler(struct intr_frame *f UNUSED)
   printf("syscall num : %d\n", *(uint32_t *)(f->esp));
   //printf("the stack pointer of syscall.c is : %X\n", (f->esp + 4));
   //f->esp = 0xBFFFFFE0;
-  hex_dump(f->esp, f->esp, 100, 1);
+  //hex_dump(f->esp, f->esp, 100, 1);
   //printf("fd: %hu, size: %i\n", *(uint32_t *)0xBFFFFFE0 + 4);
   //printf("%d, %s, %d\n", (int)*(head + 4), (const void *)*(head + 8), (unsigned)*(head + 12));
 
@@ -54,7 +54,7 @@ syscall_handler(struct intr_frame *f UNUSED)
     if (!is_user_vaddr((uint32_t *)(f->esp + 4)))
       exit(-1);
     //printf("exec %s\n", (const char *)(f->esp + 4));
-    f->eax = exec((const char *)(f->esp + 4));
+    f->eax = (uint32_t)exec((const char *)(f->esp + 4));
     break;
   case SYS_WAIT:
     /* code */
@@ -78,13 +78,13 @@ syscall_handler(struct intr_frame *f UNUSED)
     /* code */
     if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12))
       exit(-1);
-    f->eax = read((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
+    f->eax = (uint32_t)read((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
     break;
   case SYS_WRITE:
     //write();
     if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12))
       exit(-1);
-    f->eax = write((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
+    f->eax = (uint32_t)write((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
     break;
   case SYS_SEEK:
     /* code */
@@ -94,6 +94,20 @@ syscall_handler(struct intr_frame *f UNUSED)
     break;
   case SYS_CLOSE:
     /* code */
+    break;
+  case SYS_FIBO:
+    /* code */
+    if (!is_user_vaddr(f->esp + 4))
+      exit(-1);
+    printf("fibo %d\n", (int)*(uint32_t *)(f->esp + 4));
+    f->eax = (int)fibonacci((int)*(uint32_t *)(f->esp + 4));
+    break;
+  case SYS_MAX_FOUR:
+    /* code */
+    if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12) || !is_user_vaddr(f->esp + 16))
+      exit(-1);
+    //printf("four %d %d %d %d\n", *(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
+    f->eax = (uint32_t)max_of_four_int((int)*(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
     break;
   default:
     thread_exit();
@@ -112,8 +126,8 @@ void exit(int status)
   struct thread *now = thread_current();
   now->end_true = true;
   now->exit_status = status;
-  //list_remove(&(now->child_elem));
   printf("%s: exit(%d)\n", now->name, now->exit_status);
+  list_remove(&(now->child_elem));
 
   if (now->parent)
     now->parent->exit_status = now->exit_status;
@@ -164,22 +178,66 @@ int write(int fd, const void *buffer, unsigned size)
 
 pid_t exec(const char *cmd_line)
 {
-  printf("execute your area\n");
+  //printf("execute your area\n");
   char temp_name[128];
   int i = 0;
-  for (int i = 0; cmd_line[i] != '\0' && cmd_line[i] != ' '; i++)
+  for (i = 0; cmd_line[i] != '\0' && cmd_line[i] != ' '; i++)
   {
   }
   strlcpy(temp_name, cmd_line, i);
-  printf("the cmd is %s\n", cmd_line);
   temp_name[i] = '\0';
-  printf("the execute is %s\n", cmd_line);
-  printf("the temp_name is %s\n", temp_name);
+
   if (filesys_open(temp_name) == NULL)
   {
     return -1;
   }
+  printf("the execute is %s\n", temp_name);
   tid_t ret = process_execute(temp_name);
+  sema_down(&(thread_current()->sema_load));
 
   return (pid_t)ret;
+}
+
+int fibonacci(int n)
+{
+  printf("the numbers are %d\n", n);
+  int now = 1, prev = 0, result = -1;
+  n = n + 1;
+  if (n < 0)
+  {
+    result = -1;
+  }
+  else if (n == 0)
+  {
+    result = 0;
+  }
+  else if (n == 1 || n == 2)
+  {
+    result = 1;
+  }
+  else
+  {
+    for (int i = 3; i <= n; i++)
+    {
+      result = now + prev;
+      prev = now;
+      now = result;
+    }
+  }
+  return result;
+}
+
+int max_of_four_int(int a, int b, int c, int d)
+{
+
+  printf("the numbers are %d %d %d %d\n", a, b, c, d);
+
+  int maxi = a;
+  if (maxi < b)
+    maxi = b;
+  if (maxi < c)
+    maxi = c;
+  if (maxi < d)
+    maxi = d;
+  return maxi;
 }

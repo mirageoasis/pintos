@@ -21,6 +21,11 @@
         "vector": "c",
         "string_view": "c",
         "initializer_list": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "main.h": "c",
+        "lib.h": "c",
+        "*.inc": "c",
+        "condition_variable": "c",
+        "mutex": "c"
     }
 }
