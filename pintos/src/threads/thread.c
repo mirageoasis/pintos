@@ -291,11 +291,9 @@ void thread_exit(void)
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable();
+  list_remove(&(thread_current()->child_elem));
   list_remove(&thread_current()->allelem);
-  thread_current()->end_true = true;
-  // if (!list_empty(&(thread_current()->sema_exit.waiters)))
   sema_up(&(thread_current()->sema_exit));
-  //thread_current()->exit_status = THREAD_DYING;
   thread_current()->status = THREAD_DYING;
   schedule();
   NOT_REACHED();
@@ -464,8 +462,6 @@ init_thread(struct thread *t, const char *name, int priority)
   t->magic = THREAD_MAGIC;
   list_push_back(&all_list, &t->allelem);
   sema_init(&(t->sema_exit), 0);
-  t->end_true = false;
-
   list_init(&(t->child)); // child list  initialize
 }
 

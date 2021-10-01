@@ -106,10 +106,7 @@ int process_wait(tid_t child_tid UNUSED)
   if (child_thread == NULL)
     return -1;
 
-  if (child_thread->end_true == true)
-    return -1;
-  if (!child_thread->end_true)
-    sema_down(&(child_thread->sema_exit));
+  sema_down(&(child_thread->sema_exit));
   return cur->exit_status;
 }
 

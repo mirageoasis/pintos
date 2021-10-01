@@ -104,7 +104,6 @@ void exit(int status)
   struct thread *now = thread_current();
   now->exit_status = status;
   printf("%s: exit(%d)\n", now->name, now->exit_status);
-  list_remove(&(now->child_elem));
 
   if (now->parent)
     now->parent->exit_status = now->exit_status;
