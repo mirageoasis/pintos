@@ -25,20 +25,12 @@ void syscall_init(void)
 static void
 syscall_handler(struct intr_frame *f UNUSED)
 {
-  //printf("wowowo\n");
-  //printf("system call! gogogo\n");
-  //printf("syscall num : %d\n", *(uint32_t *)(f->esp));
-  //printf("the stack pointer of syscall.c is : %X\n", (f->esp + 4));
-  //f->esp = 0xBFFFFFE0;
-  //hex_dump(f->esp, f->esp, 100, 1);
-  //printf("fd: %hu, size: %i\n", *(uint32_t *)0xBFFFFFE0 + 4);
-  //printf("%d, %s, %d\n", (int)*(head + 4), (const void *)*(head + 8), (unsigned)*(head + 12));
-
   int *sc_num = f->esp;
 
+  //printf("the sc_number is %d %d %d %d\n", sc_num[1], sc_num[2], sc_num[3], sc_num[4]);
+
   if (!is_user_vaddr(sc_num))
-    if (!is_user_vaddr(sc_num))
-      exit(-1);
+    exit(-1);
 
   switch (*sc_num)
   {
@@ -160,7 +152,7 @@ pid_t exec(const char *cmd_line)
 
 int fibonacci(int n)
 {
-  printf("the numbers are %d\n", n);
+  //printf("the numbers are %d\n", n);
   int now = 1, prev = 0, result = -1;
   n = n + 1;
   if (n < 0)
@@ -189,9 +181,6 @@ int fibonacci(int n)
 
 int max_of_four_int(int a, int b, int c, int d)
 {
-
-  printf("the numbers are %d %d %d %d\n", a, b, c, d);
-
   int maxi = a;
   if (maxi < b)
     maxi = b;

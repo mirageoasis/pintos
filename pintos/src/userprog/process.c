@@ -31,26 +31,31 @@ tid_t process_execute(const char *file_name)
   char *fn_copy;
   tid_t tid;
   char *cmd;
-  char cfile[255], *dummy;
+  char cfile[255];
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy(fn_copy, file_name, PGSIZE);
+  strlcpy(cfile, file_name, PGSIZE); //복사본 만들어 놓기
 
-  strlcpy(cfile, file_name, PGSIZE);
-  cmd = strtok_r(cfile, " ", &dummy);
-  if (filesys_open(cmd) == NULL)
+  for (int i = 0; i < 255; i++)
   {
-    // printf("There is no such file\n");
+    if (cfile[i] == ' ' || cfile[i] == '\0')
+    {
+      cfile[i] = 0;
+    }
+  }
+
+  if (filesys_open(cfile) == NULL)
+  {
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create(cmd, PRI_DEFAULT, start_process, fn_copy);
+  tid = thread_create(cfile, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
-  //printf("exec :%d\n\n", tid);
   return tid;
 }
 
