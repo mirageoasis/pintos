@@ -31,7 +31,7 @@ tid_t process_execute(const char *file_name)
   char *fn_copy;
   tid_t tid;
   char *cmd;
-  char cfile[255], *save_ptr;
+  char cfile[255], *dummy;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
@@ -40,7 +40,7 @@ tid_t process_execute(const char *file_name)
   strlcpy(fn_copy, file_name, PGSIZE);
 
   strlcpy(cfile, file_name, PGSIZE);
-  cmd = strtok_r(cfile, " ", &save_ptr);
+  cmd = strtok_r(cfile, " ", &dummy);
   if (filesys_open(cmd) == NULL)
   {
     // printf("There is no such file\n");
@@ -100,30 +100,16 @@ start_process(void *file_name_)
    does nothing. */
 int process_wait(tid_t child_tid UNUSED)
 {
-  struct thread *thread_child;
+  struct thread *child_thread = get_child_process(child_tid);
   struct thread *cur = thread_current();
-  int i = 0;
-  int size = list_size(&(cur->child));
-  struct list_elem *find;
 
-  find = list_begin(&(cur->child));
-  while (1)
-  {
-    if (i >= size)
-      break;
-    thread_child = list_entry(find, struct thread, child_elem);
-    if (thread_child->tid == child_tid)
-      break;
-    find = list_next(find);
-    i++;
-  }
-  if (i >= size)
+  if (child_thread == NULL)
     return -1;
 
-  if (thread_child->end_true == true)
+  if (child_thread->end_true == true)
     return -1;
-  if (!thread_child->end_true)
-    sema_down(&(thread_child->sema_exit));
+  if (!child_thread->end_true)
+    sema_down(&(child_thread->sema_exit));
   return cur->exit_status;
 }
 
@@ -537,4 +523,28 @@ install_page(void *upage, void *kpage, bool writable)
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
   return (pagedir_get_page(th->pagedir, upage) == NULL && pagedir_set_page(th->pagedir, upage, kpage, writable));
+}
+
+struct thread *get_child_process(int pid)
+{
+  /* 자식 리스트에 접근하여 프로세스 디스크립터 검색 */
+  /* 해당 pid가 존재하면 프로세스 디스크립터 반환 */
+  /* 리스트에 존재하지 않으면 NULL 리턴 */
+  struct thread *thread_now = thread_current();
+  struct thread *thread_child;
+  int cnt = 0;
+  struct list_elem *temp = list_begin(&(thread_now->child));
+  while (cnt < list_size(&(thread_now->child)))
+  {
+    thread_child = list_entry(temp, struct thread, child_elem);
+
+    if (thread_child->tid == pid)
+    {
+      return thread_child;
+    }
+    temp = list_next(temp); //다음 원소로 이동
+    cnt++;                  // 카운트 늘려주기
+  }
+
+  return NULL;
 }

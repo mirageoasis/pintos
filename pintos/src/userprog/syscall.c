@@ -101,9 +101,7 @@ void halt()
 
 void exit(int status)
 {
-  //printf("im in the exit!\n");
   struct thread *now = thread_current();
-  //now->end_true = true;
   now->exit_status = status;
   printf("%s: exit(%d)\n", now->name, now->exit_status);
   list_remove(&(now->child_elem));
