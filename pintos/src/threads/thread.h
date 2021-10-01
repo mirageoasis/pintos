@@ -101,11 +101,9 @@ struct thread
    struct thread *parent;
    struct list_elem child_elem;
    struct list child;
-   bool load_true;
    bool end_true;
    int exit_status;
-   struct semaphore exit_sema;
-   struct semaphore load_sema;
+   struct semaphore sema_exit;
 
    /* Owned by thread.c. */
    unsigned magic; /* Detects stack overflow. */

@@ -27,88 +27,67 @@ syscall_handler(struct intr_frame *f UNUSED)
 {
   //printf("wowowo\n");
   //printf("system call! gogogo\n");
-  printf("syscall num : %d\n", *(uint32_t *)(f->esp));
+  //printf("syscall num : %d\n", *(uint32_t *)(f->esp));
   //printf("the stack pointer of syscall.c is : %X\n", (f->esp + 4));
   //f->esp = 0xBFFFFFE0;
   //hex_dump(f->esp, f->esp, 100, 1);
   //printf("fd: %hu, size: %i\n", *(uint32_t *)0xBFFFFFE0 + 4);
   //printf("%d, %s, %d\n", (int)*(head + 4), (const void *)*(head + 8), (unsigned)*(head + 12));
 
-  if (!is_user_vaddr(f->esp))
-    exit(-1);
+  int *sc_num = f->esp;
 
-  switch (*(uint32_t *)(f->esp))
+  if (!is_user_vaddr(sc_num))
+    if (!is_user_vaddr(sc_num))
+      exit(-1);
+
+  switch (*sc_num)
   {
   case SYS_HALT:
-    /* code */
     halt();
     break;
+
   case SYS_EXIT:
-    /* code */
-    if (!is_user_vaddr((f->esp + 4)))
+    if (!is_user_vaddr(&sc_num[1]))
       exit(-1);
-    exit(*(int *)(f->esp + 4));
+    exit(sc_num[1]);
     break;
+
   case SYS_EXEC:
-    /* code */
-    if (!is_user_vaddr((uint32_t *)(f->esp + 4)))
+    if (!is_user_vaddr(&sc_num[1]))
       exit(-1);
-    //printf("exec %s\n", (const char *)(f->esp + 4));
-    f->eax = (uint32_t)exec((const char *)(f->esp + 4));
+    f->eax = (uint32_t)exec((const char *)sc_num[1]);
     break;
+
   case SYS_WAIT:
-    /* code */
-    if (!is_user_vaddr(f->esp + 4))
+    if (!is_user_vaddr(&sc_num[1]))
       exit(-1);
-    f->eax = (uint32_t)wait((pid_t)f->esp + 4);
+    f->eax = (uint32_t)wait((pid_t)sc_num[1]);
     break;
-  case SYS_CREATE:
-    /* code */
-    break;
-  case SYS_REMOVE:
-    /* code */
-    break;
-  case SYS_OPEN:
-    /* code */
-    break;
-  case SYS_FILESIZE:
-    /* code */
-    break;
+
   case SYS_READ:
-    /* code */
-    if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12))
+    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]))
       exit(-1);
-    f->eax = (uint32_t)read((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
+
+    f->eax = (uint32_t)read((int)sc_num[1], (void *)sc_num[2], (unsigned)sc_num[3]);
     break;
+
   case SYS_WRITE:
-    //write();
-    if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12))
+    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]))
       exit(-1);
-    f->eax = (uint32_t)write((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*((uint32_t *)(f->esp + 12)));
+    f->eax = (uint32_t)write((int)sc_num[1], (const void *)sc_num[2], (unsigned)sc_num[3]);
     break;
-  case SYS_SEEK:
-    /* code */
-    break;
-  case SYS_TELL:
-    /* code */
-    break;
-  case SYS_CLOSE:
-    /* code */
-    break;
+
   case SYS_FIBO:
-    /* code */
-    if (!is_user_vaddr(f->esp + 4))
+    if (!is_user_vaddr(&sc_num[1]))
       exit(-1);
-    printf("fibo %d\n", (int)*(uint32_t *)(f->esp + 4));
-    f->eax = (int)fibonacci((int)*(uint32_t *)(f->esp + 4));
+    f->eax = (uint32_t)fibonacci((int)sc_num[1]);
     break;
   case SYS_MAX_FOUR:
-    /* code */
-    if (!is_user_vaddr(f->esp + 4) || !is_user_vaddr(f->esp + 8) || !is_user_vaddr(f->esp + 12) || !is_user_vaddr(f->esp + 16))
+    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]) || !is_user_vaddr(&sc_num[4]))
       exit(-1);
-    //printf("four %d %d %d %d\n", *(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
-    f->eax = (uint32_t)max_of_four_int((int)*(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
+    f->eax = (uint32_t)max_of_four_int((int)sc_num[1], (int)sc_num[2], (int)sc_num[3], (int)sc_num[4]);
     break;
+
   default:
     thread_exit();
     break;
@@ -124,7 +103,7 @@ void exit(int status)
 {
   //printf("im in the exit!\n");
   struct thread *now = thread_current();
-  now->end_true = true;
+  //now->end_true = true;
   now->exit_status = status;
   printf("%s: exit(%d)\n", now->name, now->exit_status);
   list_remove(&(now->child_elem));
@@ -175,27 +154,11 @@ int write(int fd, const void *buffer, unsigned size)
 
   return ret;
 }
-
 pid_t exec(const char *cmd_line)
 {
-  //printf("execute your area\n");
-  char temp_name[128];
-  int i = 0;
-  for (i = 0; cmd_line[i] != '\0' && cmd_line[i] != ' '; i++)
-  {
-  }
-  strlcpy(temp_name, cmd_line, i);
-  temp_name[i] = '\0';
-
-  if (filesys_open(temp_name) == NULL)
-  {
-    return -1;
-  }
-  printf("the execute is %s\n", temp_name);
-  tid_t ret = process_execute(temp_name);
-  sema_down(&(thread_current()->sema_load));
-
-  return (pid_t)ret;
+  pid_t cpid;
+  cpid = process_execute(cmd_line);
+  return cpid;
 }
 
 int fibonacci(int n)

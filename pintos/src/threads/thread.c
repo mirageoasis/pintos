@@ -104,15 +104,17 @@ void thread_init(void)
 void thread_start(void)
 {
   /* Create the idle thread. */
-  struct semaphore idle_started;
-  sema_init(&idle_started, 0);
-  thread_create("idle", PRI_MIN, idle, &idle_started);
+  struct semaphore start_idle;
+  //printf("thread 시작했으~\n");
+  sema_init(&start_idle, 0);
+  //printf("sema_init성공햇으~\n");
+  thread_create("idle", PRI_MIN, idle, &start_idle);
 
   /* Start preemptive thread scheduling. */
   intr_enable();
 
   /* Wait for the idle thread to initialize idle_thread. */
-  sema_down(&idle_started);
+  sema_down(&start_idle);
 }
 
 /* Called by the timer interrupt handler at each timer tick.
@@ -166,7 +168,7 @@ tid_t thread_create(const char *name, int priority,
   struct switch_entry_frame *ef;
   struct switch_threads_frame *sf;
   tid_t tid;
-
+  enum intr_level old_level;
   ASSERT(function != NULL);
 
   /* Allocate thread. */
@@ -177,6 +179,11 @@ tid_t thread_create(const char *name, int priority,
   /* Initialize thread. */
   init_thread(t, name, priority);
   tid = t->tid = allocate_tid();
+
+  /* Prepare thread for first run by initializing its stack.
+     Do this atomically so intermediate values for the 'stack' 
+     member cannot be observed. */
+  old_level = intr_disable();
 
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame(t, sizeof *kf);
@@ -192,10 +199,13 @@ tid_t thread_create(const char *name, int priority,
   sf = alloc_frame(t, sizeof *sf);
   sf->eip = switch_entry;
   sf->ebp = 0;
+  list_push_back(&(thread_current()->child), &(t->child_elem));
+  t->parent = thread_current();
+  t->exit_status = 0;
+  intr_set_level(old_level);
 
   /* Add to run queue. */
   thread_unblock(t);
-
   return tid;
 }
 
@@ -282,6 +292,10 @@ void thread_exit(void)
      when it calls thread_schedule_tail(). */
   intr_disable();
   list_remove(&thread_current()->allelem);
+  thread_current()->end_true = true;
+  // if (!list_empty(&(thread_current()->sema_exit.waiters)))
+  sema_up(&(thread_current()->sema_exit));
+  //thread_current()->exit_status = THREAD_DYING;
   thread_current()->status = THREAD_DYING;
   schedule();
   NOT_REACHED();
@@ -438,8 +452,6 @@ is_thread(struct thread *t)
 static void
 init_thread(struct thread *t, const char *name, int priority)
 {
-  enum intr_level old_level;
-
   ASSERT(t != NULL);
   ASSERT(PRI_MIN <= priority && priority <= PRI_MAX);
   ASSERT(name != NULL);
@@ -450,10 +462,11 @@ init_thread(struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *)t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
-
-  old_level = intr_disable();
   list_push_back(&all_list, &t->allelem);
-  intr_set_level(old_level);
+  sema_init(&(t->sema_exit), 0);
+  t->end_true = false;
+
+  list_init(&(t->child)); // child list  initialize
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and

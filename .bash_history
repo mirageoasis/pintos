@@ -1,4 +1,3 @@
-make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
 make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
@@ -1998,3 +1997,4 @@ make check
 make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
 make check
+make

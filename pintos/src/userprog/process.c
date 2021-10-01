@@ -1,3 +1,4 @@
+#include "userprog/process.h"
 #include <debug.h>
 #include <inttypes.h>
 #include <round.h>
@@ -7,7 +8,6 @@
 #include "userprog/gdt.h"
 #include "userprog/pagedir.h"
 #include "userprog/tss.h"
-#include "userprog/process.h"
 #include "filesys/directory.h"
 #include "filesys/file.h"
 #include "filesys/filesys.h"
@@ -17,6 +17,7 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "lib/stdio.h"
 
 static thread_func start_process NO_RETURN;
 static bool load(const char *cmdline, void (**eip)(void), void **esp);
@@ -30,7 +31,7 @@ tid_t process_execute(const char *file_name)
   char *fn_copy;
   tid_t tid;
   char *cmd;
-  char temp_file[128], *dummy_ptr;
+  char cfile[255], *save_ptr;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
@@ -38,55 +39,42 @@ tid_t process_execute(const char *file_name)
     return TID_ERROR;
   strlcpy(fn_copy, file_name, PGSIZE);
 
-  strlcpy(temp_file, file_name, PGSIZE);
-  cmd = strtok_r(temp_file, " ", &dummy_ptr);
+  strlcpy(cfile, file_name, PGSIZE);
+  cmd = strtok_r(cfile, " ", &save_ptr);
   if (filesys_open(cmd) == NULL)
   {
+    // printf("There is no such file\n");
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
-  //printf("function process execute start!\n");
   tid = thread_create(cmd, PRI_DEFAULT, start_process, fn_copy);
-  //sema_down(&(thread_current()->sema_load));
-  //printf("function process execute end!\n");
-
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
+  //printf("exec :%d\n\n", tid);
   return tid;
 }
 
 /* A thread function that loads a user process and starts it
    running. */
 static void
-start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중요함 파라미터 타입중요
+start_process(void *file_name_)
 {
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-  struct thread *now = thread_current();
+  struct thread *cur = thread_current();
   /* Initialize interrupt frame and load executable. */
   memset(&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
-  //printf("load started!\n");
   success = load(file_name, &if_.eip, &if_.esp);
-  sema_up(&(now->sema_load));
-  palloc_free_page(file_name);
-  //printf("the stack pointer of start_process is : %X\n", if_.esp);
-  //hex_dump(if_.esp, if_.esp, 100, true);
 
-  if (!success) /*if load fails the n thread_exit*/
+  /* If load failed, quit. */
+  palloc_free_page(file_name);
+  if (!success)
   {
-    //printf("didn't make load successful\n");
-    now->load_true = false;
     thread_exit();
-  }
-  else
-  {
-    //printf("did make load successful\n");
-    now->load_true = true;
-    //sema_down(&now->sema_load);
   }
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -112,41 +100,44 @@ start_process(void *file_name_) // 이친구가 어떻게 작업하는지가 중
    does nothing. */
 int process_wait(tid_t child_tid UNUSED)
 {
-  struct thread *child_thread = get_child_process(child_tid);
-  struct thread *now = thread_current();
-  int exit_code;
-  //printf("process_wait started!\n");
-  // while (1)
-  // {
-  // }
-  //return -1;
+  struct thread *thread_child;
+  struct thread *cur = thread_current();
+  int i = 0;
+  int size = list_size(&(cur->child));
+  struct list_elem *find;
 
-  if (child_thread == NULL)
-    return -1;
-
-  if (child_thread->status == THREAD_DYING || child_thread->end_true == true)
+  find = list_begin(&(cur->child));
+  while (1)
   {
-    //printf("end with senario 1\n");
-    return -1;
+    if (i >= size)
+      break;
+    thread_child = list_entry(find, struct thread, child_elem);
+    if (thread_child->tid == child_tid)
+      break;
+    find = list_next(find);
+    i++;
   }
-  //printf("end with senario 2\n");
-  sema_up(&(now->sema_load));
-  sema_down(&(child_thread->sema_exit));
-  //list_remove(&(child_thread->child_elem));
-  //printf("now return exit status with value %d\n", now->exit_status);
-  return now->exit_status;
+  if (i >= size)
+    return -1;
+
+  if (thread_child->end_true == true)
+    return -1;
+  if (!thread_child->end_true)
+    sema_down(&(thread_child->sema_exit));
+  return cur->exit_status;
 }
 
 /* Free the current process's resources. */
 void process_exit(void)
 {
   struct thread *cur = thread_current();
-  struct list_elem *e;
   uint32_t *pd;
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
+
   pd = cur->pagedir;
+
   if (pd != NULL)
   {
     /* Correct ordering here is crucial.  We must set
@@ -160,8 +151,6 @@ void process_exit(void)
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
-  //sema_up(&(cur->sema_load));
-  //sema_down(&(cur->sema_exit));
 }
 
 /* Sets up the CPU for running user code in the current
@@ -484,22 +473,22 @@ load_segment(struct file *file, off_t ofs, uint8_t *upage,
     size_t page_zero_bytes = PGSIZE - page_read_bytes;
 
     /* Get a page of memory. */
-    uint8_t *kpage = palloc_get_page(PAL_USER);
-    if (kpage == NULL)
+    uint8_t *knpage = palloc_get_page(PAL_USER);
+    if (knpage == NULL)
       return false;
 
     /* Load this page. */
-    if (file_read(file, kpage, page_read_bytes) != (int)page_read_bytes)
+    if (file_read(file, knpage, page_read_bytes) != (int)page_read_bytes)
     {
-      palloc_free_page(kpage);
+      palloc_free_page(knpage);
       return false;
     }
-    memset(kpage + page_read_bytes, 0, page_zero_bytes);
+    memset(knpage + page_read_bytes, 0, page_zero_bytes);
 
     /* Add the page to the process's address space. */
-    if (!install_page(upage, kpage, writable))
+    if (!install_page(upage, knpage, writable))
     {
-      palloc_free_page(kpage);
+      palloc_free_page(knpage);
       return false;
     }
 
@@ -543,40 +532,9 @@ setup_stack(void **esp)
 static bool
 install_page(void *upage, void *kpage, bool writable)
 {
-  struct thread *t = thread_current();
+  struct thread *th = thread_current();
 
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
-  return (pagedir_get_page(t->pagedir, upage) == NULL && pagedir_set_page(t->pagedir, upage, kpage, writable));
-}
-
-struct thread *get_child_process(int pid)
-{
-  /* 자식 리스트에 접근하여 프로세스 디스크립터 검색 */
-  /* 해당 pid가 존재하면 프로세스 디스크립터 반환 */
-  /* 리스트에 존재하지 않으면 NULL 리턴 */
-  struct thread *thread_now = thread_current();
-  struct thread *thread_child;
-  int cnt = 0;
-  struct list_elem *temp = list_begin(&(thread_now->child));
-  while (cnt < list_size(&(thread_now->child)))
-  {
-    thread_child = list_entry(temp, struct thread, child_elem);
-
-    if (thread_child->tid == pid)
-    {
-      return thread_child;
-    }
-    temp = list_next(temp); //다음 원소로 이동
-    cnt++;                  // 카운트 늘려주기
-  }
-
-  return NULL;
-}
-
-void remove_child_process(struct thread *cp)
-{
-  /* 자식 리스트에서 제거*/
-  /* 프로세스 디스크립터 메모리 해제 */
-  struct thread *now = thread_current();
+  return (pagedir_get_page(th->pagedir, upage) == NULL && pagedir_set_page(th->pagedir, upage, kpage, writable));
 }

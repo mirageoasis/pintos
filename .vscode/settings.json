@@ -26,6 +26,7 @@
         "lib.h": "c",
         "*.inc": "c",
         "condition_variable": "c",
-        "mutex": "c"
+        "mutex": "c",
+        "exception.h": "c"
     }
 }
