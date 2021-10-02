@@ -30,30 +30,29 @@ tid_t process_execute(const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
-  char *cmd;
-  char cfile[255];
+  char temp[255];
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy(fn_copy, file_name, PGSIZE);
-  strlcpy(cfile, file_name, PGSIZE); //복사본 만들어 놓기
+  strlcpy(temp, file_name, PGSIZE); //복사본 만들어 놓기
 
   for (int i = 0; i < 255; i++)
   {
-    if (cfile[i] == ' ' || cfile[i] == '\0')
+    if (temp[i] == ' ' || temp[i] == '\0')
     {
-      cfile[i] = 0;
+      temp[i] = 0;
     }
   }
 
-  if (filesys_open(cfile) == NULL)
+  if (filesys_open(temp) == NULL)
   {
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create(cfile, PRI_DEFAULT, start_process, fn_copy);
+  tid = thread_create(temp, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
   return tid;
@@ -67,7 +66,6 @@ start_process(void *file_name_)
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-  struct thread *cur = thread_current();
   /* Initialize interrupt frame and load executable. */
   memset(&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
@@ -237,7 +235,6 @@ bool load(const char *file_name_, void (**eip)(void), void **esp)
   off_t file_ofs;
   bool success = false;
   int i;
-  //printf("===================load is now active with process %s================\n", file_name);
 
   /*parse the file name and put them into filesys*/
   char file_name[128];
@@ -245,15 +242,11 @@ bool load(const char *file_name_, void (**eip)(void), void **esp)
   uint32_t stack_ptr[128]; //아래 stack 에서 주소를 저장하기 위한 배열
   char *dump_ptr;
   int cnt = 0;
-  //printf("the command is: %s\n", file_name);
   strlcpy(file_name, file_name_, strlen(file_name_) + 1);
-  //file_name[strlen(file_name_)] = '\0';
   now_ptr[cnt++] = strtok_r(file_name, " ", &dump_ptr);
-  //printf("%s\n", now_ptr[cnt - 1]);
   while (now_ptr[cnt - 1] != NULL)
   {
     now_ptr[cnt++] = strtok_r(NULL, " ", &dump_ptr);
-    //printf("the push is: %s\n", now_ptr[cnt - 1]);
   }
   cnt -= 1; // 마지막 null때문에 한번더 늘어나게 된다.
 
@@ -350,20 +343,20 @@ bool load(const char *file_name_, void (**eip)(void), void **esp)
     memcpy(*esp, now_ptr[j], length);
     //printf("pushing: %s at %x\n", now_ptr[i], *(esp));
     //printf("the address is %X\n", *(esp));
-  }                                         // stack에 문자열 밀어넣는 for 문
-  (*esp) = ROUND_DOWN((uint32_t)(*esp), 4); // word-align을 하기
-  (*esp) -= sizeof(char *);                 // sentinal pointer
+  }                                                 // stack에 문자열 밀어넣는 for 문
+  (*esp) = (void *)ROUND_DOWN((uint32_t)(*esp), 4); // word-align을 하기
+  (*esp) -= sizeof(char *);                         // sentinal pointer
 
   for (int j = cnt - 1; j >= 0; j--) // 주소 저장
   {
     //printf("the argv address is %x\n", *esp);
-    *esp -= sizeof(char *);                      //char*만큼 스택 포인터 빼면 시작 주소
-    **(uint32_t **)esp = &stack_ptr[j];          // 주소 저장
-    memcpy(*esp, &stack_ptr[j], sizeof(char *)); //주소 저장
+    *esp -= sizeof(char *);                       //char*만큼 스택 포인터 빼면 시작 주소
+    **(uint32_t **)esp = (uint32_t)&stack_ptr[j]; // 주소 저장
+    memcpy(*esp, &stack_ptr[j], sizeof(char *));  //주소 저장
   }
 
-  *esp -= sizeof(uint32_t);                     // stack_pointer 주소의 시작점 만큼 주소 이동
-  **(uint32_t **)esp = *esp + sizeof(uint32_t); // 그전 메모리주소 복사
+  *esp -= sizeof(uint32_t);                                 // stack_pointer 주소의 시작점 만큼 주소 이동
+  **(uint32_t **)esp = (uint32_t)(*esp + sizeof(uint32_t)); // 그전 메모리주소 복사
 
   *esp -= sizeof(int);      // argument 숫자의 개수 push하기
   **(uint32_t **)esp = cnt; // cnt  값 넣기기
@@ -536,7 +529,7 @@ struct thread *get_child_process(int pid)
   struct thread *thread_child;
   int cnt = 0;
   struct list_elem *temp = list_begin(&(thread_now->child));
-  while (cnt < list_size(&(thread_now->child)))
+  while ((size_t)cnt < list_size(&(thread_now->child)))
   {
     thread_child = list_entry(temp, struct thread, child_elem);
 

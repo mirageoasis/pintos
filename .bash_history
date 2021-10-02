@@ -1,722 +1,4 @@
 make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-gdb
-sudo apt install gdb
-make
-gdb
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-gdb
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-ㅡ맏
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-cd pintos
-cd src
-ls -a
-cd threads
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -q run 'echo abcdefghi'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make check
-make grade
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo abcdefghi'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make test
-make
-make test
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-makemake
-make
-makemake
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-[출처] Pintos - User Program Basic|작성자 사오구이
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --gdb  --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --gdb --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd pintos/
-cd src/
-cd usr
-cd userprog/
-pintos --gdb -- run alarm-multiple 
-pintos --gdb -- run alarm-multiple
-ls -a
-vi build
-gdb kernel.o
-cd ..
-cd threads
-cd build
-pintos --gdb -- run alarm-multiple
-pintos --qemu  --gdb -- run alarm-multiple
-make
-cd ..
-make
-cd build
-pintos --gdb --qemu -- run alarm-multiple
-pintos --gdb --qemu -- run alarm-multiple 
-pintos  -drive file={filename},if=scsi,format=raw
-pintos  -drive file={filename}if=scsi,format=raw
-pintos --gdb --qemu -- run alarm-multiple
-cd pintos
-cd 
-pintos-gdb kernel.o
-ls -a
-make
-cd userprog
-ls -a
-make
-ls -a
-cd build
-ls -a
-pintos-gdb kernel.o
-ls -l
-chmod 777 kernel.o
-pintos-gdb kernel.o
-ls -l
-pintos-gdb kernel.o
-chmod 755 /usr/bin/gdb
-sudo pintos-gdb kernel.o
-pintos
-pintos-gdb
-sudo pintos--gdb kernel.o
-sudo pintos --gdb kernel.o
-pintos --gdb kernel.o
-cd pintos
-cd src
-cd pintos
-cd src
-cd userprog
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --gdb -- qmenu --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-ls -a
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-ake
-maKE
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos -- --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintosp ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo --gdb -f -q run 'echo xx'
-pintos -gdb
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-make
-make check
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-ls -a
-cd,,
-cd ..
-ls -a
-cd C:\Users\USER\Desktop\핀토스 참고용
-cd Users\USER\Desktop\핀토스 참고용
-cd Users/USER/Desktop/핀토스 참고용
-cd C
-cd Users
-cd ..
-ls 0a
-ls -a
-cd C:\Users\USER\Desktop\핀토스 참고용
-cd Users\USER\Desktop\핀토스 참고용
-cd Users/
-cd Desktop
-cd desktop
-ls -a
-cd User
-cd Desktop/
-ls -a
-cd 핀토스\ 참고용/
-cd pintos
-cd src
-cd userprog
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-gcc --versions
-gcc --version
-sudoapt-get install gcc-4.5
-sudo apt-get install gcc-4.5
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 50
-make
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.5 50
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
 make
@@ -1998,3 +1280,721 @@ pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
 make check
 make
 cd ..
+make
+cd pintos/
+cd src
+cd userprog/
+make
+make check
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd ..
+chmod 777 -R pintos
+cd ..
+ls -a
+cd kimhw0820/
+cd pintos/
+cd src
+ls =a
+ls -a
+cd examples/
+make
+cd ..
+cd userprog/
+amek
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+git reset
+make
+git reset
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd ..
+cd  ..
+cd $HOME
+chmod -R 777 pintos
+cd pintos/
+cd src/
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd src/
+cd userprog/
+make check
+cd ..
+cd userprog/
+make
+cd ..
+cd examples/
+make
+cd ..
+cd tests/
+make
+cd userprog/
+make
+cd ..
+cd examples/
+make
+cd ..
+cd user
+cd userprog/
+make
+make check
+cd ..
+chmod -R 777 pintos
+cd pintos/
+cd src
+cd examples/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+make check
+cd ..
+cd threads/
+make
+cd ..
+make
+make clean
+cd ..
+source ~/.bashrc
+cd pintos
+cd src
+ls -a
+cd examples/
+make
+cd ..
+cd threads/
+make
+cd ...
+cd ..
+cd user
+cd userprog/
+make
+make check
+cd ..
+chmod -R 777 pintos
+cd pintos/
+cd src
+cd ex
+cd examples/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+make check
+make
+make check
+cd ..
+cd $home
+chmod -R 777 pintos
+cd pintos
+cd src
+ls -a
+cd examples/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+cd ..
+chmod -R 777 pintos2
+cd pintos2
+cd src
+cd examples/
+make
+cd ..
+cd thread
+cd threads
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+cd ..
+make
+cd userprog/
+make
+cd ..
+make clean
+cd ..
+cd pintos
+cd src
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+cd ..
+cd
+cd pintos
+cd
+cd src
+cd p
+cd pintos
+chmod -R 777 src
+cd src
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd thr
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make clean
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+make clean
+cd src
+make
+make clean
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+cd ..
+make
+make clean
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd examples/
+make
+cd user
+cd ..
+cd userprog/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+chmod -R 777 src
+cd src/userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make grade
+cd build
+make grade
+ls -a
+vi grade
+cd ..
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd examples/
+make
+cd ..
+cd u
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40
+cd ..
+cd examples/
+make
+make clean
+make
+make clean
+make
+make clean
+make
+make clean
+make
+make clean
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+make clean
+cd examples/
+make
+make clean
+make
+make clean
+make
+make clean
+make
+make clean
+make
+make clean
+make
+cd ..
+cd pintos2
+cd src
+cd ,,
+cd ..
+cd pintos
+cd src/
+cd examples/
+make
+make clean
+make
+make clean
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+make clean
+git add --all
+git commit "마지막 보험"
+git commit "last insurance"
+cd src/
+cd examples/
+cd ..
+cd userprog/
+make
+cd ..
+cd examples/
+make
+cd ..
+cd userprog/
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 4'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x 12 2'
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x 12 2   21 123    '
+cd ..
+cd examples/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+make
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+git add --all
+git commmit "for now"
+git commmit -m "제출 예비"
+git commit -m "제출 예비"
+git push
+make
+cd src
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+make check
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+git reset
+git rest
+git reset
+make
+MAKE
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+make check
+cd build
+make grade
+vi grade
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+cd ..
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd build
+cd ..
+make clean
+git add --all
+git add -m "여기까지는 작동가능"
+git commit  -m "여기까지는 작동가능"
+git push
+cd src/
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+cd ..
+make clean
+git add --all
+git commit -m "무슨원리냐"
+cd src
+cd examples/
+make
+cd ..
+cd userprog/
+make
+make check
+make grade
+make
+make check
+make grade
+make
+make check
+make grade
+make check
+make
+make check
+make
+make check
+make grade
+make
+cd ..
+make clean
+git add --all
+git commit -m "revolution"
+git push
+cd src/
+cd examples
+cd ..
+cd userprog/
+make
+make check
+make grade
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make
+pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
+make check
+make grade
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+make clean
+cd src/
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd ..
+make clean
+cd src/
+cd userprog/
+make
+make check
+make
+make check
+make grade
+make check
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+cd ..
+cd threads/
+make
+cd threads/
+cd user
+cd ..
+cd userprog/
+make
+make check
+make grade
+make
+cd ..
+make clean
+git add --all
+git commit -m "새벽은 여기까지"
+git push
+cd..
+cd ..
+cd examples/
+make

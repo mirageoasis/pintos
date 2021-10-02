@@ -145,14 +145,11 @@ int write(int fd, const void *buffer, unsigned size)
 }
 pid_t exec(const char *cmd_line)
 {
-  pid_t cpid;
-  cpid = process_execute(cmd_line);
-  return cpid;
+  return (pid_t)process_execute(cmd_line);
 }
 
 int fibonacci(int n)
 {
-  //printf("the numbers are %d\n", n);
   int now = 1, prev = 0, result = -1;
   n = n + 1;
   if (n < 0)

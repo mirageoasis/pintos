@@ -105,9 +105,7 @@ void thread_start(void)
 {
   /* Create the idle thread. */
   struct semaphore start_idle;
-  //printf("thread 시작했으~\n");
   sema_init(&start_idle, 0);
-  //printf("sema_init성공햇으~\n");
   thread_create("idle", PRI_MIN, idle, &start_idle);
 
   /* Start preemptive thread scheduling. */
@@ -199,11 +197,11 @@ tid_t thread_create(const char *name, int priority,
   sf = alloc_frame(t, sizeof *sf);
   sf->eip = switch_entry;
   sf->ebp = 0;
+  /*add child_elem into current running thread*/
   list_push_back(&(thread_current()->child), &(t->child_elem));
   t->parent = thread_current();
   intr_set_level(old_level);
 
-  /* Add to run queue. */
   thread_unblock(t);
   return tid;
 }
