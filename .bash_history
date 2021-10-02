@@ -1,35 +1,3 @@
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-cd ..
 cd pintos2
 cd src
 cd userprog/
@@ -1998,3 +1966,35 @@ pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'ad
 make
 pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
 make check
+cd pintos/src/userprog/
+make check
+make grade
+make
+make check
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make check
+make grade
+cd ../..
+make clean
+git add --all
+git commit -m "fin?"
+git push
+cd src/
+cd examples/
+make
+cd ..
+cd examples/
+cd ../threads/
+make
+cd ../userprog/
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+make
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+git reset
+pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'

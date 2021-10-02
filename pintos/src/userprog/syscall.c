@@ -26,8 +26,11 @@ static void
 syscall_handler(struct intr_frame *f UNUSED)
 {
   //printf("the sc is %d\n", (uint32_t *)(f->esp)[1]);
-  //printf("the (int)(f->esp) is %d\n", (int)*(uint32_t *)(f->esp + 4));
-  //printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)(f->esp)[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
+  //printf("%d\n",(int)*(uint32_t*)(f->esp));
+//	printf("the (int)(f->esp) is %d %d %d %d\n", (int)*(uint32_t *)(f->esp+4),(int *)*(uint32_t *)(f->esp + 8), (int *)*(uint32_t *)(f->esp + 12), (int *)*(uint32_t *)(f->esp + 16));
+  //hex_dump(f->esp,f->esp,100,1);
+ // printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)f->esp[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
+
 
   if (!verify_access((uint32_t *)(f->esp), 1))
     exit(-1);

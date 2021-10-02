@@ -537,7 +537,7 @@ struct thread *get_child_process(int pid)
     {
       return thread_child;
     }
-    if (temp == list_end(&(thread_now->child)))
+    if (temp == list_end(&(thread_now->child))) // pid 일치 했으면 이미 return 했기 때문에 여기 까지 오면 pid 일치하는거 하나 없는거 맞음
     {
       break;
     }
