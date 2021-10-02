@@ -529,13 +529,17 @@ struct thread *get_child_process(int pid)
   struct thread *thread_child;
   int cnt = 0;
   struct list_elem *temp = list_begin(&(thread_now->child));
-  while ((size_t)cnt < list_size(&(thread_now->child)))
+  while (1)
   {
     thread_child = list_entry(temp, struct thread, child_elem);
 
     if (thread_child->tid == pid)
     {
       return thread_child;
+    }
+    if (temp == list_end(&(thread_now->child)))
+    {
+      break;
     }
     temp = list_next(temp); //다음 원소로 이동
     cnt++;                  // 카운트 늘려주기

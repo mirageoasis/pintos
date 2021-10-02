@@ -25,59 +25,59 @@ void syscall_init(void)
 static void
 syscall_handler(struct intr_frame *f UNUSED)
 {
-  int *sc_num = f->esp;
+  //printf("the sc is %d\n", (uint32_t *)(f->esp)[1]);
+  //printf("the (int)(f->esp) is %d\n", (int)*(uint32_t *)(f->esp + 4));
+  //printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)(f->esp)[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
 
-  //printf("the sc_number is %d %d %d %d\n", sc_num[1], sc_num[2], sc_num[3], sc_num[4]);
-
-  if (!is_user_vaddr(sc_num))
+  if (!verify_access((uint32_t *)(f->esp), 1))
     exit(-1);
 
-  switch (*sc_num)
+  switch ((int)*(uint32_t *)(f->esp))
   {
   case SYS_HALT:
     halt();
     break;
 
   case SYS_EXIT:
-    if (!is_user_vaddr(&sc_num[1]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
       exit(-1);
-    exit(sc_num[1]);
+    exit(*(uint32_t *)(f->esp + 4));
     break;
 
   case SYS_EXEC:
-    if (!is_user_vaddr(&sc_num[1]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
       exit(-1);
-    f->eax = (uint32_t)exec((const char *)sc_num[1]);
+    f->eax = (uint32_t)exec((const char *)*(uint32_t *)(f->esp + 4));
     break;
 
   case SYS_WAIT:
-    if (!is_user_vaddr(&sc_num[1]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
       exit(-1);
-    f->eax = (uint32_t)wait((pid_t)sc_num[1]);
+    f->eax = (uint32_t)wait((pid_t) * (uint32_t *)(f->esp + 4));
     break;
 
   case SYS_READ:
-    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 3))
       exit(-1);
 
-    f->eax = (uint32_t)read((int)sc_num[1], (void *)sc_num[2], (unsigned)sc_num[3]);
+    f->eax = (uint32_t)read((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*(uint32_t *)(f->esp + 12));
     break;
 
   case SYS_WRITE:
-    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 3))
       exit(-1);
-    f->eax = (uint32_t)write((int)sc_num[1], (const void *)sc_num[2], (unsigned)sc_num[3]);
+    f->eax = (uint32_t)write((int)*(uint32_t *)(f->esp + 4), (const void *)*(uint32_t *)(f->esp + 8), (unsigned)*(uint32_t *)(f->esp + 12));
     break;
 
   case SYS_FIBO:
-    if (!is_user_vaddr(&sc_num[1]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
       exit(-1);
-    f->eax = (uint32_t)fibonacci((int)sc_num[1]);
+    f->eax = (uint32_t)fibonacci((int)*(uint32_t *)(f->esp + 4));
     break;
   case SYS_MAX_FOUR:
-    if (!is_user_vaddr(&sc_num[1]) || !is_user_vaddr(&sc_num[2]) || !is_user_vaddr(&sc_num[3]) || !is_user_vaddr(&sc_num[4]))
+    if (!verify_access((uint32_t *)(f->esp) + 4, 4))
       exit(-1);
-    f->eax = (uint32_t)max_of_four_int((int)sc_num[1], (int)sc_num[2], (int)sc_num[3], (int)sc_num[4]);
+    f->eax = (uint32_t)max_of_four_int((int)*(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
     break;
 
   default:
@@ -186,4 +186,17 @@ int max_of_four_int(int a, int b, int c, int d)
   if (maxi < d)
     maxi = d;
   return maxi;
+}
+
+bool verify_access(uint32_t *args, int argc)
+{
+  for (int i = 0; i < argc; i++)
+  {
+    if (!is_user_vaddr(args + i * 4))
+    {
+      return false;
+    }
+  }
+
+  return true;
 }
