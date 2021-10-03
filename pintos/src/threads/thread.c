@@ -461,6 +461,11 @@ init_thread(struct thread *t, const char *name, int priority)
   list_push_back(&all_list, &t->allelem);
   sema_init(&(t->sema_exit), 0);
   list_init(&(t->child)); // child list  initialize
+
+  for (int i = 0; i < 128; i++)
+  {
+    t->fd[i] = NULL;
+  }
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and

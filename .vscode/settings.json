@@ -27,6 +27,7 @@
         "*.inc": "c",
         "condition_variable": "c",
         "mutex": "c",
-        "exception.h": "c"
+        "exception.h": "c",
+        "*.tcc": "c"
     }
 }

@@ -103,6 +103,7 @@ struct thread
    struct list child;
    int exit_status;
    struct semaphore sema_exit;
+   struct file *fd[128];
 
    /* Owned by thread.c. */
    unsigned magic; /* Detects stack overflow. */

@@ -1,50 +1,3 @@
-cd pintos2
-cd src
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd ..
-cd threads/
-../utils/pintos -v -- -q run alarm-multiple
-chmod 777 ../utils/pintos 
-../utils/pintos -v -- -q run alarm-multiple
-make
-../utils/pintos -v -- -q run alarm-multiple
-cd ..
-ls -a
-cd $HOME
-ls -a
-cd pintos12
-cd pintos2
-cd ..
-ls -a
-vi ~./bashrc
-vi ~/.bashrc
-source ~/.bashrc
-cd pintos2
-cd userprog
-cd src
-cd userprog/
-make
-cd ..
-cd thread
-cd threads/
-make
-cd ..
-cd userprog/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-source ~/.bashrc
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd ..
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
 cd ..
 vi ~/.bashrc
@@ -1998,3 +1951,50 @@ make
 pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
 git reset
 pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
+cd pintos/
+cdmod -R +x src
+chmod -R +x src
+cd src
+cd examples/
+make
+cd ../threads/
+make
+cd ../examples/
+make
+cd ../userprog/
+make
+cd ..
+cd pintos/
+make clean
+git add -all
+git add --all
+git commit -m "proj1 finish!"
+git push
+cd src/
+cd userprog/
+make check
+cd pintos/
+cd src/examples/
+make
+cd ../userprog/
+make
+cd ../threads/
+make
+cd ../userprog/
+make
+make check
+ls -a
+make check
+make
+make check
+cd pintos/src/
+cd userprog/
+ls =a
+ls -a
+cd pintos/src/userprog/
+make
+make check
+mmake
+make
+make check
+make grade

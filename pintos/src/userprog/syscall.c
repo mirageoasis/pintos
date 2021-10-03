@@ -8,6 +8,8 @@
 #include "userprog/exception.h"
 #include "userprog/process.h"
 #include <devices/input.h>
+#include "filesys/file.h"
+#include "filesys/filesys.h"
 
 static void syscall_handler(struct intr_frame *);
 void halt(void);
@@ -27,60 +29,92 @@ syscall_handler(struct intr_frame *f UNUSED)
 {
   //printf("the sc is %d\n", (uint32_t *)(f->esp)[1]);
   //printf("%d\n",(int)*(uint32_t*)(f->esp));
-//	printf("the (int)(f->esp) is %d %d %d %d\n", (int)*(uint32_t *)(f->esp+4),(int *)*(uint32_t *)(f->esp + 8), (int *)*(uint32_t *)(f->esp + 12), (int *)*(uint32_t *)(f->esp + 16));
-  //hex_dump(f->esp,f->esp,100,1);
- // printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)f->esp[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
-
-
-  if (!verify_access((uint32_t *)(f->esp), 1))
+  //	printf("the (int)(f->esp) is %d %d %d %d\n", (int)*(uint32_t *)(f->esp+4),(int *)sc[2], (int *)sc[3], (int *)*(uint32_t *)(f->esp + 16));
+  //hex_dump(f->esp, f->esp, 100, 1);
+  // printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)f->esp[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
+  //printf("inside the syscall!\n");
+  int *sc = f->esp;
+  if (!verify_access((uint32_t *)sc, 1))
     exit(-1);
 
-  switch ((int)*(uint32_t *)(f->esp))
+  //printf("the syscall is %d!\n", sc[0]);
+
+  switch (sc[0])
   {
   case SYS_HALT:
     halt();
     break;
-
   case SYS_EXIT:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
+    if (!verify_access((uint32_t *)&sc[1], 1))
       exit(-1);
-    exit(*(uint32_t *)(f->esp + 4));
+    exit(sc[1]);
     break;
-
   case SYS_EXEC:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
+    if (!verify_access((uint32_t *)&sc[1], 1))
       exit(-1);
-    f->eax = (uint32_t)exec((const char *)*(uint32_t *)(f->esp + 4));
+    f->eax = (uint32_t)exec((const char *)sc[1]);
     break;
-
   case SYS_WAIT:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
+    if (!verify_access((uint32_t *)&sc[1], 1))
       exit(-1);
-    f->eax = (uint32_t)wait((pid_t) * (uint32_t *)(f->esp + 4));
+    f->eax = (uint32_t)wait((pid_t)sc[1]);
     break;
-
+  case SYS_CREATE:
+    //printf("inside the syscall!\n");
+    if (!verify_access((uint32_t *)&sc[1], 2))
+      exit(-1);
+    f->eax = (uint32_t)create((const char *)sc[1], (off_t)sc[2]);
+    break;
+  case SYS_REMOVE:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    f->eax = (uint32_t)remove((const char *)sc[1]);
+    break;
+  case SYS_OPEN:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    f->eax = (uint32_t)open((const char *)sc[1]);
+    break;
+  case SYS_FILESIZE:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    f->eax = (uint32_t)filesize((int)sc[1]);
+    break;
   case SYS_READ:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 3))
+    if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
-
-    f->eax = (uint32_t)read((int)*(uint32_t *)(f->esp + 4), (void *)*(uint32_t *)(f->esp + 8), (unsigned)*(uint32_t *)(f->esp + 12));
+    //printf("the file fd size is %d, %d\n", (int)sc[1], (unsigned)sc[3]);
+    f->eax = (uint32_t)read((int)sc[1], (void *)sc[2], (unsigned)sc[3]);
     break;
-
   case SYS_WRITE:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 3))
+    if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
-    f->eax = (uint32_t)write((int)*(uint32_t *)(f->esp + 4), (const void *)*(uint32_t *)(f->esp + 8), (unsigned)*(uint32_t *)(f->esp + 12));
+    f->eax = (uint32_t)write((int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
     break;
-
-  case SYS_FIBO:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 1))
+  case SYS_SEEK:
+    if (!verify_access((uint32_t *)&sc[1], 2))
       exit(-1);
-    f->eax = (uint32_t)fibonacci((int)*(uint32_t *)(f->esp + 4));
+    seek((int)sc[1], (unsigned int)sc[2]);
+    break;
+  case SYS_TELL:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    f->eax = (uint32_t)tell((int)sc[1]);
+    break;
+  case SYS_CLOSE:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    close((int)sc[1]);
+    break;
+  case SYS_FIBO:
+    if (!verify_access((uint32_t *)&sc[1], 1))
+      exit(-1);
+    f->eax = (uint32_t)fibonacci((int)sc[1]);
     break;
   case SYS_MAX_FOUR:
-    if (!verify_access((uint32_t *)(f->esp) + 4, 4))
+    if (!verify_access((uint32_t *)&sc[1], 4))
       exit(-1);
-    f->eax = (uint32_t)max_of_four_int((int)*(uint32_t *)(f->esp + 4), (int)*(uint32_t *)(f->esp + 8), (int)*(uint32_t *)(f->esp + 12), (int)*(uint32_t *)(f->esp + 16));
+    f->eax = (uint32_t)max_of_four_int((int)sc[1], (int)sc[2], (int)sc[3], (int)sc[4]);
     break;
 
   default:
@@ -105,14 +139,64 @@ void exit(int status)
   thread_exit();
 }
 
+pid_t exec(const char *cmd_line)
+{
+  return (pid_t)process_execute(cmd_line);
+}
+
 int wait(pid_t pid)
 {
   return process_wait((tid_t)pid);
 }
 
+bool create(const char *file, unsigned initial_size)
+{
+  if (file == NULL)
+    exit(-1);
+
+  return filesys_create(file, initial_size);
+}
+
+bool remove(const char *file)
+{
+  if (file == NULL)
+    exit(-1);
+
+  return filesys_remove(file);
+}
+
+int open(const char *file)
+{
+  if (file == NULL)
+    exit(-1);
+  //  && filesys_open(file) != NULL 이거 왜 안댐?
+  for (int i = 3; i < 128; i++)
+  {
+    if (thread_current()->fd[i] == NULL)
+    {
+      //filesys_open(file) != NULL
+      thread_current()->fd[i] = filesys_open(file);
+      return i;
+    }
+  }
+  //printf("%s file does not success!\n", file);
+  return -1;
+}
+
+int filesize(int fd)
+{
+  if (thread_current()->fd[fd])
+    exit(-1);
+
+  return file_length(thread_current()->fd[fd]);
+}
+
 int read(int fd, void *buffer, unsigned size)
 {
   int ret = -1;
+
+  if (thread_current()->fd[fd] == NULL)
+    exit(-1);
 
   if (fd == 0)
   {
@@ -122,9 +206,14 @@ int read(int fd, void *buffer, unsigned size)
       ret++;
     }
   }
-  else
+  else if (fd > 2)
   {
-    ret = ret;
+    if (thread_current()->fd[fd] == NULL)
+      exit(-1);
+    //printf("the file name is %s\n", );
+    //int
+    //printf("the fd is %d\n", fd);
+    ret = file_read(thread_current()->fd[fd], buffer, size);
   }
 
   return ret;
@@ -139,16 +228,38 @@ int write(int fd, const void *buffer, unsigned size)
     putbuf(buffer, size);
     ret = size;
   }
-  else
+  else if (fd > 2)
   {
     /*TODO NOT NOW FOR NOW*/
+    if (thread_current()->fd[fd] == NULL)
+      exit(-1);
+    ret = file_write(thread_current()->fd[fd], buffer, size);
   }
-
   return ret;
 }
-pid_t exec(const char *cmd_line)
+
+void seek(int fd, unsigned position)
 {
-  return (pid_t)process_execute(cmd_line);
+  if (thread_current()->fd[fd] == NULL)
+    exit(-1);
+
+  file_seek(thread_current()->fd[fd], position);
+}
+
+unsigned tell(int fd)
+{
+  if (thread_current()->fd[fd] == NULL)
+    exit(-1);
+
+  return file_tell(thread_current()->fd[fd]);
+}
+
+void close(int fd)
+{
+  if (thread_current()->fd[fd] == NULL)
+    exit(-1);
+
+  file_close(thread_current()->fd[fd]);
 }
 
 int fibonacci(int n)

@@ -28,9 +28,11 @@ static bool load(const char *cmdline, void (**eip)(void), void **esp);
    thread id, or TID_ERROR if the thread cannot be created. */
 tid_t process_execute(const char *file_name)
 {
+  ASSERT(file_name);
   char *fn_copy;
   tid_t tid;
   char temp[255];
+  char *dummy_ptr, *cmd;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
@@ -38,17 +40,11 @@ tid_t process_execute(const char *file_name)
     return TID_ERROR;
   strlcpy(fn_copy, file_name, PGSIZE);
   strlcpy(temp, file_name, PGSIZE); //복사본 만들어 놓기
-
-  for (int i = 0; i < 255; i++)
+  cmd = strtok_r(temp, " ", &dummy_ptr);
+  if (filesys_open(cmd) == NULL)
   {
-    if (temp[i] == ' ' || temp[i] == '\0')
-    {
-      temp[i] = 0;
-    }
-  }
-
-  if (filesys_open(temp) == NULL)
-  {
+    //ASSERT(filesys_open(cmd));
+    //printf("There is no such file\n");
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
@@ -72,7 +68,7 @@ start_process(void *file_name_)
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load(file_name, &if_.eip, &if_.esp);
-
+  //printf("load is finished!");
   /* If load failed, quit. */
   palloc_free_page(file_name);
   if (!success)
