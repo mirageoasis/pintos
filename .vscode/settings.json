@@ -28,6 +28,8 @@
         "condition_variable": "c",
         "mutex": "c",
         "exception.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "fstream": "c",
+        "sstream": "c"
     }
 }

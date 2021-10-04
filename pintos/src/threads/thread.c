@@ -288,6 +288,10 @@ void thread_exit(void)
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable();
+  for (int i = 0; i < 128; i++)
+  {
+    thread_current()->fd[i] = NULL;
+  }
   list_remove(&(thread_current()->child_elem));
   list_remove(&thread_current()->allelem);
   sema_up(&(thread_current()->sema_exit));

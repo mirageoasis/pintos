@@ -73,6 +73,7 @@ syscall_handler(struct intr_frame *f UNUSED)
   case SYS_OPEN:
     if (!verify_access((uint32_t *)&sc[1], 1))
       exit(-1);
+    //printf("putting %s in open function\n", (const char *)sc[1]);
     f->eax = (uint32_t)open((const char *)sc[1]);
     break;
   case SYS_FILESIZE:
@@ -168,15 +169,24 @@ bool remove(const char *file)
 int open(const char *file)
 {
   if (file == NULL)
+  {
     exit(-1);
-  //  && filesys_open(file) != NULL 이거 왜 안댐?
+    return -1;
+  }
+  //printf("the file name is! %s length: %d\n", file, file[strlen(file)]);
+  //ASSERT(filesys_open(file))
   for (int i = 3; i < 128; i++)
   {
-    if (thread_current()->fd[i] == NULL)
+    if (thread_current()->fd[i] == NULL && filesys_open(file) != NULL)
     {
-      //filesys_open(file) != NULL
+
+      //if (filesys_open(file) != NULL)
+      // {
       thread_current()->fd[i] = filesys_open(file);
       return i;
+      //}
+      break;
+      //printf("file open sucess!\n");
     }
   }
   //printf("%s file does not success!\n", file);
