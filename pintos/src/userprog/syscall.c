@@ -11,6 +11,10 @@
 #include "filesys/file.h"
 #include "filesys/filesys.h"
 
+struct lock one;
+struct lock two;
+int readNum = 0;
+
 static void syscall_handler(struct intr_frame *);
 void halt(void);
 void exit(int status);
@@ -21,6 +25,8 @@ pid_t exec(const char *cmd_line);
 
 void syscall_init(void)
 {
+  lock_init(&one);
+  lock_init(&two);
   intr_register_int(0x30, 3, INTR_ON, syscall_handler, "syscall");
 }
 
@@ -30,6 +36,7 @@ syscall_handler(struct intr_frame *f UNUSED)
   //printf("the sc is %d\n", (uint32_t *)(f->esp)[1]);
   //printf("%d\n",(int)*(uint32_t*)(f->esp));
   //	printf("the (int)(f->esp) is %d %d %d %d\n", (int)*(uint32_t *)(f->esp+4),(int *)sc[2], (int *)sc[3], (int *)*(uint32_t *)(f->esp + 16));
+  //hex_dump(0x804c7c0, 0x804c7c0, 100, 1);
   //hex_dump(f->esp, f->esp, 100, 1);
   // printf("the (uint32_t *)(f->esp)ber is %d %d %d %d\n", (uint32_t *)f->esp[1], (uint32_t *)(f->esp)[2], (uint32_t *)(f->esp)[3], (uint32_t *)(f->esp)[4]);
   //printf("inside the syscall!\n");
@@ -91,7 +98,7 @@ syscall_handler(struct intr_frame *f UNUSED)
   case SYS_WRITE:
     if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
-    //printf("%d %p %d\n", (int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
+
     f->eax = (uint32_t)write((int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
     break;
   case SYS_SEEK:
@@ -207,7 +214,7 @@ int read(int fd, void *buffer, unsigned size)
   int ret = -1;
   //printf("read until line 207!\n");
   //printf("the fd is %d the size is %d\n", fd, size);
-  if (buffer == NULL || !is_user_vaddr(buffer))
+  if (buffer == NULL || !is_user_vaddr(buffer) || thread_current()->fd[fd] == NULL)
   {
     exit(-1);
     return -1;
@@ -227,6 +234,7 @@ int read(int fd, void *buffer, unsigned size)
     if (thread_current()->fd[fd] == NULL)
     {
       exit(-1);
+      return -1;
     }
     //printf("read until the file_read!\n");
     ret = file_read(thread_current()->fd[fd], buffer, size);
@@ -248,6 +256,7 @@ int write(int fd, const void *buffer, unsigned size)
     //printf("end with senario write\n");
     putbuf(buffer, size);
     ret = size;
+    //printf("%d\n", size);
   }
   else if (fd > 2)
   {
@@ -256,9 +265,13 @@ int write(int fd, const void *buffer, unsigned size)
     {
       exit(-1);
     }
+    //printf("go to write!\n");
     ret = file_write(thread_current()->fd[fd], buffer, size);
   }
-  //printf("the write status is %d\n", ret);
+
+  if (ret == -1)
+    exit(-1);
+
   return ret;
 }
 

@@ -1,132 +1,3 @@
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-cd //
-ls -a
-cd home
-cd pintos/
-cd src/
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-git push
-cd ..
-make
-cd ..
-cd pintos/
-cd user
-cd src
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make checkmake
-make
-cd ..
-cd ...
-cd ..
-git clone https://github.com/mirageoasis/pintos.git
-cd pintos/
-
-cd ..
-cd pintos/
-cd src/
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-make check
-make
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo -a echo.c -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo.c -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-source ~/.bashrc
-cd pintos/
-cd src/
-cd cd userprog/
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-vi /.bashrc
-vi ~/.bashrc
-source ~/.bashrc
-cd src
-cd pintos/
-cd src
-cd userprog/
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-chmod -R 777 pintos
-ls -l
-cd pintos/
-cd src/
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
 cd //
 cd home/
 source ~/.bashrc
@@ -1998,3 +1869,132 @@ make check
 make grade
 make
 make check
+cd pintos/src
+cd userprog/
+make check
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make check
+make hcek
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make check
+make chekc
+make check
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+make check
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/exec-once -a exec-once -- -q  -f run exec-once
+make
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+cd ..
+make clean
+git add --all
+git commit -m "close problem solved!"
+git push
+cd src/examples/
+make
+cd ../threads/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+cd build/
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/read-normal -a read-normal -p ../../tests/userprog/sample.txt -a sample.txt -- -q  -f run read-normal 
+git reset
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/read-normal -a read-normal -p ../../tests/userprog/sample.txt -a sample.txt -- -q  -f run read-normal 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/read-normal -a read-normal -p ../../tests/userprog/sample.txt -a sample.txt -- -q  -f run read-normal 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/read-normal -a read-normal -p ../../tests/userprog/sample.txt -a sample.txt -- -q  -f run read-normal 
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -- -q  -f run wait-simple
+make check
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/bad-read -a bad-read -- -q  -f run bad-read

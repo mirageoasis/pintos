@@ -32,6 +32,7 @@
         "fstream": "c",
         "sstream": "c",
         "directory.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "vaddr.h": "c"
     }
 }
