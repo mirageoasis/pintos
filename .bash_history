@@ -1,397 +1,3 @@
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'exec xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-cd pintos/
-cd src
-cd userprog/
-make
-cd userprog/
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'exec xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make grade
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-mak3e
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xx'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make check
-make
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make check
-make
-make check
-make
-make check
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-cd pintos
-cd src
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo xbasd'
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-git push
-git add --all
-git commit -m "exec and wait"
-git push
-make
-git push
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd pintos/
-cd src
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
 make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
 make
@@ -1998,3 +1604,397 @@ cd userprog/
 ls -l
 chmod +w sample.txt
 cd ..
+cd pintos/src/userprog/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+make clean
+git add --all
+git commit -m "일단 open쪽 filesys가 문제다!"
+git push
+cd src/
+cd userprog/
+cd bu
+make
+cd ..
+cd examples/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+git reset
+cd ..
+git reset
+cd ..
+cd pintos/
+cd sr
+cd src
+cd examples/
+make
+cd ..
+cd userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+cd chmod +rwx src
+cd chmod -R +rwx src
+cd chmod -R 777 src
+chmod -R +rwx src
+cd src/
+cd userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+chmod -R +rw pintos/
+cd pintos/
+cd ..
+chmod -
+chmod -R +rx pintos
+cd pintos/src/userprog/
+make
+cd ..
+cd examples/
+make
+cd ..
+cd userprog/build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+make
+cd ../examples/
+make
+cd ../userprog/
+cd build/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+chmod -R +rx pintos
+cd ..
+chmod -R +rx pintos
+cd pintos/src/userprog/
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd pintos/src/examples/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ../userprog/
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+name
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+cd ..
+cd filesys/
+make
+cd ../userprog/build/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+cd ../../tests/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+cd ../filesys/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+chmod -
+chmod -R +rx pintos
+cd pintos/src/
+cd examples/
+make
+cd ../threads/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+cd ../threads/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd 
+cd pintos/
+chmod -R +rw src/
+ls 0l
+ls -l
+cd src/examples/
+make
+cd ../threads/
+make
+cd ../userprog/
+make
+cd ..
+cd utils/
+gdb pintos-gdb
+cd ..
+cd src/userprog/
+make
+cd build/
+cd ..
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+chmod -R +x pintos
+chmod -R +x src
+ls -l
+cd src/
+cd userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+git reset
+make clean
+git reset
+cd src/
+make
+cd userprog/
+make
+cd ../threads/
+make
+cd ../examples/
+make
+cd ../userprog/
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+cd ../
+cd tests/
+cd userprog/
+make
+cd ..
+make
+cd ../userprog/
+make
+cd build/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd pintos/
+cd src/userprog/
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd pintos/
+cd src/
+make
+cd threads/
+make
+cd ..
+cd examples/
+make
+cd ../userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+make
+make check
+make
+make check
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+cd pintos/
+cd src/userprog/
+make check
+make grade
+make check
+make grade
+make check
+make grade
+cd b
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+cd ..
+make check
+make
+make check
+make
+make check
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+make check
+make
+make check
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+cd ..
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make check
+make grade
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+cd pintos/src/examples/
+make
+cd ../threads/
+ma
+make
+../userprog/make
+cd ../userprog/
+make
+make check
+cd pintos/src/userprog/
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+make
+cd ...
+cd ..
+make
+cd build/
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
+pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
+cd ..
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make checkmake
+make
+make check
+maKE
+make
+make check
+make
+make grade
+make
+make grade
+make
+make check
+make grade
+make
+make check

@@ -30,6 +30,8 @@
         "exception.h": "c",
         "*.tcc": "c",
         "fstream": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "directory.h": "c",
+        "string.h": "c"
     }
 }

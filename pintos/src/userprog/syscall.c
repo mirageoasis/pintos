@@ -84,12 +84,14 @@ syscall_handler(struct intr_frame *f UNUSED)
   case SYS_READ:
     if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
+    //printf("read until line 87! descriptor is %d\n", sc[1]);
     //printf("the file fd size is %d, %d\n", (int)sc[1], (unsigned)sc[3]);
     f->eax = (uint32_t)read((int)sc[1], (void *)sc[2], (unsigned)sc[3]);
     break;
   case SYS_WRITE:
     if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
+    //printf("%d %p %d\n", (int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
     f->eax = (uint32_t)write((int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
     break;
   case SYS_SEEK:
@@ -119,7 +121,7 @@ syscall_handler(struct intr_frame *f UNUSED)
     break;
 
   default:
-    thread_exit();
+    exit(-1);
     break;
   }
 }
@@ -137,6 +139,13 @@ void exit(int status)
 
   if (now->parent)
     now->parent->exit_status = now->exit_status;
+
+  for (int i = 3; i < 128; i++)
+  {
+    if (thread_current()->fd[i] != NULL)
+      close(i);
+  }
+
   thread_exit();
 }
 
@@ -168,25 +177,19 @@ bool remove(const char *file)
 
 int open(const char *file)
 {
-  if (file == NULL)
-  {
+  if (file == NULL || !is_user_vaddr(file))
     exit(-1);
-    return -1;
-  }
-  //printf("the file name is! %s length: %d\n", file, file[strlen(file)]);
+  //printf("the file name is! %s\n", file);
   //ASSERT(filesys_open(file))
+  struct file *fp = filesys_open(file);
+  if (fp == NULL)
+    return -1;
   for (int i = 3; i < 128; i++)
   {
-    if (thread_current()->fd[i] == NULL && filesys_open(file) != NULL)
+    if (thread_current()->fd[i] == NULL)
     {
-
-      //if (filesys_open(file) != NULL)
-      // {
-      thread_current()->fd[i] = filesys_open(file);
+      thread_current()->fd[i] = fp;
       return i;
-      //}
-      break;
-      //printf("file open sucess!\n");
     }
   }
   //printf("%s file does not success!\n", file);
@@ -195,19 +198,21 @@ int open(const char *file)
 
 int filesize(int fd)
 {
-  if (thread_current()->fd[fd])
-    exit(-1);
-
-  return file_length(thread_current()->fd[fd]);
+  struct thread *cur = thread_current();
+  return file_length(cur->fd[fd]);
 }
 
 int read(int fd, void *buffer, unsigned size)
 {
   int ret = -1;
-
-  if (thread_current()->fd[fd] == NULL)
+  //printf("read until line 207!\n");
+  //printf("the fd is %d the size is %d\n", fd, size);
+  if (buffer == NULL || !is_user_vaddr(buffer))
+  {
     exit(-1);
-
+    return -1;
+  }
+  //printf("you shall not pass!\n");
   if (fd == 0)
   {
     ret = 0;
@@ -218,11 +223,12 @@ int read(int fd, void *buffer, unsigned size)
   }
   else if (fd > 2)
   {
+    //printf("the fd is bigger than 3!\n");
     if (thread_current()->fd[fd] == NULL)
+    {
       exit(-1);
-    //printf("the file name is %s\n", );
-    //int
-    //printf("the fd is %d\n", fd);
+    }
+    //printf("read until the file_read!\n");
     ret = file_read(thread_current()->fd[fd], buffer, size);
   }
 
@@ -231,6 +237,11 @@ int read(int fd, void *buffer, unsigned size)
 
 int write(int fd, const void *buffer, unsigned size)
 {
+  if (buffer == NULL || !is_user_vaddr(buffer))
+  {
+    exit(-1);
+  }
+  //printf("%d %p %d\n", fd, buffer, size);
   int ret = -1;
   if (fd == 1)
   {
@@ -242,9 +253,12 @@ int write(int fd, const void *buffer, unsigned size)
   {
     /*TODO NOT NOW FOR NOW*/
     if (thread_current()->fd[fd] == NULL)
+    {
       exit(-1);
+    }
     ret = file_write(thread_current()->fd[fd], buffer, size);
   }
+  //printf("the write status is %d\n", ret);
   return ret;
 }
 
@@ -267,9 +281,13 @@ unsigned tell(int fd)
 void close(int fd)
 {
   if (thread_current()->fd[fd] == NULL)
+  {
     exit(-1);
+  }
 
-  file_close(thread_current()->fd[fd]);
+  struct file *fp = thread_current()->fd[fd];
+  file_close(fp);
+  thread_current()->fd[fd] = NULL;
 }
 
 int fibonacci(int n)
