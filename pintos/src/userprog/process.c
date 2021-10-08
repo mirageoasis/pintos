@@ -41,6 +41,7 @@ tid_t process_execute(const char *file_name)
   strlcpy(fn_copy, file_name, PGSIZE);
   strlcpy(temp, file_name, PGSIZE); //복사본 만들어 놓기
   cmd = strtok_r(temp, " ", &dummy_ptr);
+  //printf("the file_name of cmd in process_execute is! %s\n", file_name);
   if (filesys_open(cmd) == NULL)
   {
     //ASSERT(filesys_open(cmd));
@@ -52,6 +53,7 @@ tid_t process_execute(const char *file_name)
   //sema_down(&thread_current()->sema_load);
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
+  //printf("the tid is %d\n", tid);
   return tid;
 }
 
@@ -105,12 +107,16 @@ int process_wait(tid_t child_tid UNUSED)
   struct thread *cur = thread_current();
 
   if (child_thread == NULL)
+  {
+    //printf("child at process_wait is -1!");
     return -1;
+  }
 
   //printf("this is process wait!\n");
 
-  sema_down(&(child_thread->sema_exit));
-  return cur->exit_status;
+  sema_down(&(child_thread->sema_wait));
+  sema_up(&(child_thread->sema_exit));
+  return child_thread->exit_status;
 }
 
 /* Free the current process's resources. */

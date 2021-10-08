@@ -145,7 +145,9 @@ void exit(int status)
   printf("%s: exit(%d)\n", now->name, now->exit_status);
 
   if (now->parent)
+  {
     now->parent->exit_status = now->exit_status;
+  }
 
   for (int i = 3; i < 128; i++)
   {
@@ -195,6 +197,10 @@ int open(const char *file)
   {
     if (thread_current()->fd[i] == NULL)
     {
+      if (strcmp(thread_current()->name, file) == 0)
+      {
+        file_deny_write(fp);
+      }
       thread_current()->fd[i] = fp;
       return i;
     }

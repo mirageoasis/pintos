@@ -103,6 +103,7 @@ struct thread
    struct list child;
    int exit_status;
    struct semaphore sema_exit;
+   struct semaphore sema_wait;
    struct semaphore sema_load;
    struct file *fd[128];
 
