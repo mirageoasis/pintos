@@ -67,7 +67,7 @@ tid_t process_execute(const char *file_name)
       return process_wait(tid);
     find = list_next(find);
   }
-  //
+  //고치기 !!
   return tid;
 }
 

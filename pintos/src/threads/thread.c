@@ -293,7 +293,7 @@ void thread_exit(void)
     thread_current()->fd[i] = NULL;
   }
   //sema_up(&(thread_current()->sema_wait));
-  list_remove(&(thread_current()->child_elem));
+  //list_remove(&(thread_current()->child_elem));
   list_remove(&thread_current()->allelem);
   //sema_down(&(thread_current()->sema_exit));
   running_thread()->status = THREAD_DYING;

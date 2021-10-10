@@ -8,6 +8,7 @@
 #include "userprog/exception.h"
 #include "userprog/process.h"
 #include <devices/input.h>
+#include <string.h>
 #include "filesys/file.h"
 #include "filesys/filesys.h"
 
@@ -20,6 +21,13 @@ int wait(pid_t pid);
 int read(int fd, void *buffer, unsigned size);
 int write(int fd, const void *buffer, unsigned size);
 pid_t exec(const char *cmd_line);
+
+struct file
+{
+  struct inode *inode; /* File's inode. */
+  off_t pos;           /* Current position. */
+  bool deny_write;     /* Has file_deny_write() been called? */
+};
 
 void syscall_init(void)
 {
@@ -152,7 +160,11 @@ void exit(int status)
 
 pid_t exec(const char *cmd_line)
 {
-  return (pid_t)process_execute(cmd_line);
+
+  lock_acquire(&file_lock);
+  pid_t ret = (pid_t)process_execute(cmd_line);
+  lock_release(&file_lock);
+  return ret;
 }
 
 int wait(pid_t pid)
@@ -164,16 +176,20 @@ bool create(const char *file, unsigned initial_size)
 {
   if (file == NULL)
     exit(-1);
-
-  return filesys_create(file, initial_size);
+  lock_acquire(&file_lock);
+  bool ret = filesys_create(file, initial_size);
+  lock_release(&file_lock);
+  return ret;
 }
 
 bool remove(const char *file)
 {
   if (file == NULL)
     exit(-1);
-
-  return filesys_remove(file);
+  lock_acquire(&file_lock);
+  bool ret = filesys_remove(file);
+  lock_release(&file_lock);
+  return ret;
 }
 
 int open(const char *file)
@@ -183,8 +199,8 @@ int open(const char *file)
     exit(-1);
   //printf("the file name is! %s\n", file);
   //ASSERT(filesys_open(file))
-  struct file *fp = filesys_open(file);
   lock_acquire(&file_lock);
+  struct file *fp = filesys_open(file);
   if (fp == NULL)
   {
     ret = -1;
@@ -205,15 +221,20 @@ int open(const char *file)
       }
     }
   }
-  //printf("%s file does not success!\n", file);
   lock_release(&file_lock);
+  //printf("%s file does not success!\n", file);
   return ret;
 }
 
 int filesize(int fd)
 {
+
   struct thread *cur = thread_current();
-  return file_length(cur->fd[fd]);
+
+  lock_acquire(&file_lock);
+  int ret = file_length(cur->fd[fd]);
+  lock_release(&file_lock);
+  return ret;
 }
 
 int read(int fd, void *buffer, unsigned size)
@@ -221,32 +242,34 @@ int read(int fd, void *buffer, unsigned size)
   int ret = -1;
   //printf("read until line 207!\n");
   //printf("the fd is %d the size is %d\n", fd, size);
-  if (buffer == NULL || !is_user_vaddr(buffer) || thread_current()->fd[fd] == NULL)
+  if (buffer == NULL || !is_user_vaddr(buffer))
   {
     exit(-1);
   }
   //printf("you shall not pass!\n");
-  lock_acquire(&file_lock);
   if (fd == 0)
   {
+    lock_acquire(&file_lock);
     ret = 0;
     while (input_getc() != '\0')
     {
       ret++;
     }
+    lock_release(&file_lock);
   }
   else if (fd > 2)
   {
     //printf("the fd is bigger than 3!\n");
+    //printf("read until the file_read!\n");
+    lock_acquire(&file_lock);
     if (thread_current()->fd[fd] == NULL)
     {
       lock_release(&file_lock);
       exit(-1);
     }
-    //printf("read until the file_read!\n");
     ret = file_read(thread_current()->fd[fd], buffer, size);
+    lock_release(&file_lock);
   }
-  lock_release(&file_lock);
   return ret;
 }
 
@@ -257,13 +280,14 @@ int write(int fd, const void *buffer, unsigned size)
     exit(-1);
   }
   //printf("%d %p %d\n", fd, buffer, size);
-  lock_acquire(&file_lock);
   int ret = -1;
   if (fd == 1)
   {
     //printf("end with senario write\n");
+    lock_acquire(&file_lock);
     putbuf(buffer, size);
     ret = size;
+    lock_release(&file_lock);
     //printf("%d\n", size);
   }
   else if (fd > 2)
@@ -271,14 +295,17 @@ int write(int fd, const void *buffer, unsigned size)
     /*TODO NOT NOW FOR NOW*/
     if (thread_current()->fd[fd] == NULL)
     {
-      lock_release(&file_lock);
       exit(-1);
     }
     //printf("go to write!\n");
+    lock_acquire(&file_lock);
+    if (thread_current()->fd[fd]->deny_write)
+    {
+      file_deny_write(thread_current()->fd[fd]);
+    }
     ret = file_write(thread_current()->fd[fd], buffer, size);
+    lock_release(&file_lock);
   }
-
-  lock_release(&file_lock);
 
   return ret;
 }
@@ -287,16 +314,19 @@ void seek(int fd, unsigned position)
 {
   if (thread_current()->fd[fd] == NULL)
     exit(-1);
-
+  lock_acquire(&file_lock);
   file_seek(thread_current()->fd[fd], position);
+  lock_release(&file_lock);
 }
 
 unsigned tell(int fd)
 {
   if (thread_current()->fd[fd] == NULL)
     exit(-1);
-
-  return file_tell(thread_current()->fd[fd]);
+  lock_acquire(&file_lock);
+  unsigned ret = file_tell(thread_current()->fd[fd]);
+  lock_release(&file_lock);
+  return ret;
 }
 
 void close(int fd)
@@ -305,10 +335,11 @@ void close(int fd)
   {
     exit(-1);
   }
-
+  lock_acquire(&file_lock);
   struct file *fp = thread_current()->fd[fd];
   file_close(fp);
   thread_current()->fd[fd] = NULL;
+  lock_release(&file_lock);
 }
 
 int fibonacci(int n)
