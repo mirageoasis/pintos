@@ -103,7 +103,7 @@ syscall_handler(struct intr_frame *f UNUSED)
   case SYS_WRITE:
     if (!verify_access((uint32_t *)&sc[1], 3))
       exit(-1);
-
+    //printf("the write!\n");
     f->eax = (uint32_t)write((int)sc[1], (const void *)sc[2], (unsigned)sc[3]);
     break;
   case SYS_SEEK:
@@ -198,7 +198,6 @@ int open(const char *file)
   if (file == NULL || !is_user_vaddr(file))
     exit(-1);
   //printf("the file name is! %s\n", file);
-  //ASSERT(filesys_open(file))
   lock_acquire(&file_lock);
   struct file *fp = filesys_open(file);
   if (fp == NULL)
@@ -249,26 +248,26 @@ int read(int fd, void *buffer, unsigned size)
   //printf("you shall not pass!\n");
   if (fd == 0)
   {
-    lock_acquire(&file_lock);
+    //lock_acquire(&file_lock);
     ret = 0;
     while (input_getc() != '\0')
     {
       ret++;
     }
-    lock_release(&file_lock);
+    //lock_release(&file_lock);
   }
   else if (fd > 2)
   {
     //printf("the fd is bigger than 3!\n");
     //printf("read until the file_read!\n");
-    lock_acquire(&file_lock);
+    //lock_acquire(&file_lock);
     if (thread_current()->fd[fd] == NULL)
     {
-      lock_release(&file_lock);
+      //lock_release(&file_lock);
       exit(-1);
     }
     ret = file_read(thread_current()->fd[fd], buffer, size);
-    lock_release(&file_lock);
+    //lock_release(&file_lock);
   }
   return ret;
 }
@@ -281,13 +280,13 @@ int write(int fd, const void *buffer, unsigned size)
   }
   //printf("%d %p %d\n", fd, buffer, size);
   int ret = -1;
+  //lock_acquire(&file_lock);
   if (fd == 1)
   {
-    //printf("end with senario write\n");
-    lock_acquire(&file_lock);
+    //printf("end before lock_acquire!\n");
+    //ASSERT(thread_current()->fd[fd]);
     putbuf(buffer, size);
     ret = size;
-    lock_release(&file_lock);
     //printf("%d\n", size);
   }
   else if (fd > 2)
@@ -298,15 +297,15 @@ int write(int fd, const void *buffer, unsigned size)
       exit(-1);
     }
     //printf("go to write!\n");
-    lock_acquire(&file_lock);
     if (thread_current()->fd[fd]->deny_write)
     {
+      //printf("hi!\n");
       file_deny_write(thread_current()->fd[fd]);
     }
+    //printf("they write?\n");
     ret = file_write(thread_current()->fd[fd], buffer, size);
-    lock_release(&file_lock);
   }
-
+  //lock_release(&file_lock);
   return ret;
 }
 
