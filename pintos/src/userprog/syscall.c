@@ -141,11 +141,6 @@ void exit(int status)
   now->exit_status = status;
   printf("%s: exit(%d)\n", now->name, now->exit_status);
 
-  if (now->parent)
-  {
-    now->parent->exit_status = now->exit_status;
-  }
-
   for (int i = 3; i < 128; i++)
   {
     if (thread_current()->fd[i] != NULL)

@@ -33,6 +33,8 @@ tid_t process_execute(const char *file_name)
   tid_t tid;
   char temp[255];
   char *dummy_ptr, *cmd;
+  struct list_elem *find;
+  struct thread *tchild;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page(0);
@@ -54,6 +56,18 @@ tid_t process_execute(const char *file_name)
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
   //printf("the tid is %d\n", tid);
+  // 다시 고쳐보기
+  find = list_begin(&thread_current()->child);
+  while (1)
+  {
+    if (find == list_end(&thread_current()->child))
+      break;
+    tchild = list_entry(find, struct thread, child_elem);
+    if (tchild->exit_status == -1)
+      return process_wait(tid);
+    find = list_next(find);
+  }
+  //
   return tid;
 }
 
@@ -77,8 +91,11 @@ start_process(void *file_name_)
   palloc_free_page(file_name);
   if (!success)
   {
-    thread_exit();
+    thread_current()->load_flag = false;
+    exit(-1);
   }
+  thread_current()->load_flag = true;
+
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
@@ -105,7 +122,7 @@ int process_wait(tid_t child_tid UNUSED)
 {
   struct thread *child_thread = get_child_process(child_tid);
   struct thread *cur = thread_current();
-  int exit_status;
+  int exit_status = -1;
 
   struct list_elem *e;
   struct thread *t = NULL;
@@ -118,9 +135,10 @@ int process_wait(tid_t child_tid UNUSED)
   }
 
   sema_down(&(child_thread->sema_wait));
+  exit_status = child_thread->exit_status;
   list_remove(&(child_thread->child_elem));
   sema_up(&(child_thread->sema_exit));
-  return child_thread->exit_status;
+  return exit_status;
 }
 
 /* Free the current process's resources. */

@@ -292,10 +292,10 @@ void thread_exit(void)
   {
     thread_current()->fd[i] = NULL;
   }
-  sema_up(&(thread_current()->sema_wait));
-  sema_down(&(thread_current()->sema_exit));
+  //sema_up(&(thread_current()->sema_wait));
   list_remove(&(thread_current()->child_elem));
   list_remove(&thread_current()->allelem);
+  //sema_down(&(thread_current()->sema_exit));
   running_thread()->status = THREAD_DYING;
   schedule();
   NOT_REACHED();
@@ -463,6 +463,7 @@ init_thread(struct thread *t, const char *name, int priority)
   t->priority = priority;
   t->magic = THREAD_MAGIC;
   t->exit_status = 0;
+  t->load_flag = false;
   list_push_back(&all_list, &t->allelem);
   sema_init(&(t->sema_exit), 0);
   sema_init(&(t->sema_wait), 0);
