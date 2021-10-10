@@ -11,9 +11,7 @@
 #include "filesys/file.h"
 #include "filesys/filesys.h"
 
-struct lock one;
-struct lock two;
-int readNum = 0;
+struct lock file_lock;
 
 static void syscall_handler(struct intr_frame *);
 void halt(void);
@@ -25,8 +23,7 @@ pid_t exec(const char *cmd_line);
 
 void syscall_init(void)
 {
-  lock_init(&one);
-  lock_init(&two);
+  lock_init(&file_lock);
   intr_register_int(0x30, 3, INTR_ON, syscall_handler, "syscall");
 }
 
@@ -186,27 +183,36 @@ bool remove(const char *file)
 
 int open(const char *file)
 {
+  int ret = -1;
   if (file == NULL || !is_user_vaddr(file))
     exit(-1);
   //printf("the file name is! %s\n", file);
   //ASSERT(filesys_open(file))
   struct file *fp = filesys_open(file);
+  lock_acquire(&file_lock);
   if (fp == NULL)
-    return -1;
-  for (int i = 3; i < 128; i++)
   {
-    if (thread_current()->fd[i] == NULL)
+    ret = -1;
+  }
+  else
+  {
+    for (int i = 3; i < 128; i++)
     {
-      if (strcmp(thread_current()->name, file) == 0)
+      if (thread_current()->fd[i] == NULL)
       {
-        file_deny_write(fp);
+        if (strcmp(thread_current()->name, file) == 0)
+        {
+          file_deny_write(fp);
+        }
+        thread_current()->fd[i] = fp;
+        ret = i;
+        break;
       }
-      thread_current()->fd[i] = fp;
-      return i;
     }
   }
   //printf("%s file does not success!\n", file);
-  return -1;
+  lock_release(&file_lock);
+  return ret;
 }
 
 int filesize(int fd)
@@ -223,9 +229,9 @@ int read(int fd, void *buffer, unsigned size)
   if (buffer == NULL || !is_user_vaddr(buffer) || thread_current()->fd[fd] == NULL)
   {
     exit(-1);
-    return -1;
   }
   //printf("you shall not pass!\n");
+  lock_acquire(&file_lock);
   if (fd == 0)
   {
     ret = 0;
@@ -239,13 +245,13 @@ int read(int fd, void *buffer, unsigned size)
     //printf("the fd is bigger than 3!\n");
     if (thread_current()->fd[fd] == NULL)
     {
+      lock_release(&file_lock);
       exit(-1);
-      return -1;
     }
     //printf("read until the file_read!\n");
     ret = file_read(thread_current()->fd[fd], buffer, size);
   }
-
+  lock_release(&file_lock);
   return ret;
 }
 
@@ -256,6 +262,7 @@ int write(int fd, const void *buffer, unsigned size)
     exit(-1);
   }
   //printf("%d %p %d\n", fd, buffer, size);
+  lock_acquire(&file_lock);
   int ret = -1;
   if (fd == 1)
   {
@@ -269,14 +276,14 @@ int write(int fd, const void *buffer, unsigned size)
     /*TODO NOT NOW FOR NOW*/
     if (thread_current()->fd[fd] == NULL)
     {
+      lock_release(&file_lock);
       exit(-1);
     }
     //printf("go to write!\n");
     ret = file_write(thread_current()->fd[fd], buffer, size);
   }
 
-  if (ret == -1)
-    exit(-1);
+  lock_release(&file_lock);
 
   return ret;
 }

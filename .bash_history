@@ -1,101 +1,3 @@
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg < /dev/null 2> tests/userprog/exec-arg.errt
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg eex
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg -p tests/userprog/child-args -a child-args -- -q  -f run exec-arg eeexec-args
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/exec-arg -a exec-arg
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-maKE
-make'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-backtrace
-backtrace kernel.o
-backtrace make
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-git add --all
-git commit -m "maintainance"
-git push
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make chekc
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
 pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
 make check
 cd pintos/
@@ -1998,3 +1900,101 @@ pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wai
 mAKE
 make
 pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+cd pintos/src/userprog/
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+cd build/
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+maker
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/wait-simple -a wait-simple -p tests/userprog/child-simple -a child-simple -- -q  -f run wait-simple 
+make
+make check
+cd ..
+make clean
+git add --all
+git commit "syn read syn write multi-oom"
+git commit -m "syn read syn write multi-oom"
+git push
+make check
+cd src
+cd example
+ls -a
+cd examples
+make
+cd ../threads/
+make
+cd ../userprog/
+make
+make check
+cd build/
+pintos -v -k -T 300 --qemu  --filesys-size=2 -p tests/filesys/base/syn-read -a syn-read -p tests/filesys/base/child-syn-read -a child-syn-read -- -q  -f run syn-read
+make
+pintos -v -k -T 300 --qemu  --filesys-size=2 -p tests/filesys/base/syn-read -a syn-read -p tests/filesys/base/child-syn-read -a child-syn-read -- -q  -f run syn-read
+make
+make check
+mkake
+make
+make check

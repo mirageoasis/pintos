@@ -50,7 +50,7 @@ tid_t process_execute(const char *file_name)
   }
   /* Create a new thread to execute FILE_NAME. */
   tid = thread_create(temp, PRI_DEFAULT, start_process, fn_copy);
-  //sema_down(&thread_current()->sema_load);
+  sema_down(&thread_current()->sema_load);
   if (tid == TID_ERROR)
     palloc_free_page(fn_copy);
   //printf("the tid is %d\n", tid);
@@ -71,7 +71,7 @@ start_process(void *file_name_)
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load(file_name, &if_.eip, &if_.esp);
-  //sema_up(&thread_current()->parent->sema_load);
+  sema_up(&thread_current()->parent->sema_load);
   //printf("load is finished!");
   /* If load failed, quit. */
   palloc_free_page(file_name);
@@ -105,16 +105,20 @@ int process_wait(tid_t child_tid UNUSED)
 {
   struct thread *child_thread = get_child_process(child_tid);
   struct thread *cur = thread_current();
+  int exit_status;
+
+  struct list_elem *e;
+  struct thread *t = NULL;
+  //printf("this is process wait!\n");
 
   if (child_thread == NULL)
   {
-    //printf("child at process_wait is -1!");
+    //printf("child at process_wait is -1!\n");
     return -1;
   }
 
-  //printf("this is process wait!\n");
-
   sema_down(&(child_thread->sema_wait));
+  list_remove(&(child_thread->child_elem));
   sema_up(&(child_thread->sema_exit));
   return child_thread->exit_status;
 }
@@ -129,6 +133,9 @@ void process_exit(void)
      to the kernel-only page directory. */
 
   pd = cur->pagedir;
+
+  sema_up(&(thread_current()->sema_wait));
+  sema_down(&(thread_current()->sema_exit));
 
   if (pd != NULL)
   {
