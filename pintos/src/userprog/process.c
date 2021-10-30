@@ -46,8 +46,6 @@ tid_t process_execute(const char *file_name)
   //printf("the file_name of cmd in process_execute is! %s\n", file_name);
   if (filesys_open(cmd) == NULL)
   {
-    //ASSERT(filesys_open(cmd));
-    //printf("There is no such file\n");
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
@@ -91,10 +89,8 @@ start_process(void *file_name_)
   palloc_free_page(file_name);
   if (!success)
   {
-    thread_current()->load_flag = false;
     exit(-1);
   }
-  thread_current()->load_flag = true;
 
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -124,8 +120,6 @@ int process_wait(tid_t child_tid UNUSED)
   struct thread *cur = thread_current();
   int exit_status = -1;
 
-  struct list_elem *e;
-  struct thread *t = NULL;
   //printf("this is process wait!\n");
 
   if (child_thread == NULL)

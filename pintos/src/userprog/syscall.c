@@ -176,9 +176,9 @@ bool create(const char *file, unsigned initial_size)
 {
   if (file == NULL)
     exit(-1);
-  lock_acquire(&file_lock);
+  //lock_acquire(&file_lock);
   bool ret = filesys_create(file, initial_size);
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
   return ret;
 }
 
@@ -186,9 +186,9 @@ bool remove(const char *file)
 {
   if (file == NULL)
     exit(-1);
-  lock_acquire(&file_lock);
+  //lock_acquire(&file_lock);
   bool ret = filesys_remove(file);
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
   return ret;
 }
 
@@ -221,7 +221,6 @@ int open(const char *file)
     }
   }
   lock_release(&file_lock);
-  //printf("%s file does not success!\n", file);
   return ret;
 }
 
@@ -230,17 +229,15 @@ int filesize(int fd)
 
   struct thread *cur = thread_current();
 
-  lock_acquire(&file_lock);
+  //lock_acquire(&file_lock);
   int ret = file_length(cur->fd[fd]);
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
   return ret;
 }
 
 int read(int fd, void *buffer, unsigned size)
 {
   int ret = -1;
-  //printf("read until line 207!\n");
-  //printf("the fd is %d the size is %d\n", fd, size);
   if (buffer == NULL || !is_user_vaddr(buffer))
   {
     exit(-1);
@@ -258,8 +255,6 @@ int read(int fd, void *buffer, unsigned size)
   }
   else if (fd > 2)
   {
-    //printf("the fd is bigger than 3!\n");
-    //printf("read until the file_read!\n");
     //lock_acquire(&file_lock);
     if (thread_current()->fd[fd] == NULL)
     {
@@ -299,7 +294,7 @@ int write(int fd, const void *buffer, unsigned size)
     //printf("go to write!\n");
     if (thread_current()->fd[fd]->deny_write)
     {
-      //printf("hi!\n");
+
       file_deny_write(thread_current()->fd[fd]);
     }
     //printf("they write?\n");
@@ -313,18 +308,18 @@ void seek(int fd, unsigned position)
 {
   if (thread_current()->fd[fd] == NULL)
     exit(-1);
-  lock_acquire(&file_lock);
+  //lock_acquire(&file_lock);
   file_seek(thread_current()->fd[fd], position);
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
 }
 
 unsigned tell(int fd)
 {
   if (thread_current()->fd[fd] == NULL)
     exit(-1);
-  lock_acquire(&file_lock);
+  //lock_acquire(&file_lock);
   unsigned ret = file_tell(thread_current()->fd[fd]);
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
   return ret;
 }
 
@@ -334,11 +329,10 @@ void close(int fd)
   {
     exit(-1);
   }
-  lock_acquire(&file_lock);
-  struct file *fp = thread_current()->fd[fd];
-  file_close(fp);
+  //lock_acquire(&file_lock);
+  file_close(thread_current()->fd[fd]);
   thread_current()->fd[fd] = NULL;
-  lock_release(&file_lock);
+  //lock_release(&file_lock);
 }
 
 int fibonacci(int n)

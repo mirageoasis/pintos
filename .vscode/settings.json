@@ -34,6 +34,7 @@
         "directory.h": "c",
         "string.h": "c",
         "vaddr.h": "c",
-        "shutdown.h": "c"
+        "shutdown.h": "c",
+        "interrupt.h": "c"
     }
 }

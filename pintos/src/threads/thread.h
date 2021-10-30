@@ -4,7 +4,12 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
-#include "synch.h"
+#include "threads/synch.h"
+
+/* Project #3 */
+#ifndef USERPROG
+extern bool thread_prior_aging;
+#endif
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -90,7 +95,7 @@ struct thread
    uint8_t *stack;            /* Saved stack pointer. */
    int priority;              /* Priority. */
    struct list_elem allelem;  /* List element for all threads list. */
-
+   int64_t wake_up_tick;      /*wake up tick*/
    /* Shared between thread.c and synch.c. */
    struct list_elem elem; /* List element. */
 
@@ -148,4 +153,11 @@ void thread_set_nice(int);
 int thread_get_recent_cpu(void);
 int thread_get_load_avg(void);
 
-#endif /* threads/thread.h */
+/*project 3*/
+void thread_sleep(int64_t ticks);
+void thread_awake(int64_t ticks);
+void ready_and_running_priorty(void);
+bool priority_setup(struct list_elem *l, struct list_elem *s, void *aux UNUSED);
+/*list_push_back 대신하는함수*/
+#endif
+/* threads/thread.h */

@@ -23,6 +23,9 @@
 /* List of processes in THREAD_READY state, that is, processes
    that are ready to run but not actually running. */
 static struct list ready_list;
+/* List of processes in THREAD_READY state, that is, processes
+   that are ready to run but not actually running. */
+static struct list sleep_list;
 
 /* List of all processes.  Processes are added to this list
    when they are first scheduled and removed when they exit. */
@@ -37,6 +40,7 @@ static struct thread *initial_thread;
 /* Lock used by allocate_tid(). */
 static struct lock tid_lock;
 
+/*the min tick to awake*/
 /* Stack frame for kernel_thread(). */
 struct kernel_thread_frame
 {
@@ -53,6 +57,11 @@ static long long user_ticks;   /* # of timer ticks in user programs. */
 /* Scheduling. */
 #define TIME_SLICE 4          /* # of timer ticks to give each thread. */
 static unsigned thread_ticks; /* # of timer ticks since last yield. */
+
+#ifndef USERPROG
+/* Project #3 */
+bool thread_priorty_aging;
+#endif
 
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
@@ -91,6 +100,7 @@ void thread_init(void)
   lock_init(&tid_lock);
   list_init(&ready_list);
   list_init(&all_list);
+  list_init(&sleep_list);
 
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread();
@@ -202,6 +212,7 @@ tid_t thread_create(const char *name, int priority,
   t->parent = thread_current();
   intr_set_level(old_level);
 
+  ready_and_running_priorty();
   thread_unblock(t);
   return tid;
 }
@@ -237,7 +248,8 @@ void thread_unblock(struct thread *t)
 
   old_level = intr_disable();
   ASSERT(t->status == THREAD_BLOCKED);
-  list_push_back(&ready_list, &t->elem);
+  //list_push_back(&ready_list, &t->elem);
+  list_insert_ordered(&ready_list, &t->elem, priority_setup, 0);
   t->status = THREAD_READY;
   intr_set_level(old_level);
 }
@@ -311,8 +323,11 @@ void thread_yield(void)
   ASSERT(!intr_context());
 
   old_level = intr_disable();
+  //if (cur != idle_thread)
+  //  list_push_back(&ready_list, &cur->elem);
   if (cur != idle_thread)
-    list_push_back(&ready_list, &cur->elem);
+    list_insert_ordered(&ready_list, &cur->elem, priority_setup, 0);
+
   cur->status = THREAD_READY;
   schedule();
   intr_set_level(old_level);
@@ -338,6 +353,7 @@ void thread_foreach(thread_action_func *func, void *aux)
 void thread_set_priority(int new_priority)
 {
   thread_current()->priority = new_priority;
+  ready_and_running_priorty;
 }
 
 /* Returns the current thread's priority. */
@@ -588,3 +604,68 @@ allocate_tid(void)
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof(struct thread, stack);
+
+void thread_sleep(int64_t ticks)
+{
+  /* 현재 스레드가 idle 스레드가 아닐경우
+  thread의 상태를 BLOCKED로 바꾸고 깨어나야 할 ticks을 저장,
+  슬립 큐에 삽입하고, awake함수가 실행되어야 할 tick값을 update */
+  /* 현재 스레드를 슬립 큐에 삽입한 후에 스케줄한다. */
+  /* 해당 과정중에는 인터럽트를 받아들이지 않는다. */
+
+  struct thread *cur = thread_current();
+  enum intr_level old_level;
+
+  ASSERT(!intr_context());
+
+  old_level = intr_disable();
+  ASSERT(cur != idle_thread);
+  cur->wake_up_tick = ticks;
+  list_push_back(&sleep_list, &cur->elem);
+  thread_block();
+  intr_set_level(old_level);
+}
+
+void thread_awake(int64_t ticks)
+{
+  /* sleep list의 모든 entry 를 순회하며 다음과 같은 작업을 수행한다.
+현재 tick이 깨워야 할 tick 보다 크거나 같다면 슬립 큐에서 제거하고
+unblock 한다.
+*/
+  struct thread *cur;
+  struct list_elem *find = list_begin(&sleep_list);
+  struct list_elem *end = list_end(&sleep_list);
+
+  while (find != end)
+  {
+    cur = list_entry(find, struct thread, elem);
+
+    if (cur->wake_up_tick <= ticks)
+    {
+      find = list_remove(find);
+      thread_unblock(cur);
+    }
+    else
+      find = list_next(find);
+  }
+}
+
+bool priority_setup(struct list_elem *l, struct list_elem *s, void *aux UNUSED)
+{
+  return list_entry(l, struct thread, elem)->priority > list_entry(s, struct thread, elem)->priority;
+}
+
+void ready_and_running_priorty()
+{
+  if (list_empty(&ready_list))
+  {
+    return;
+  }
+
+  struct thread *ready = list_entry(list_begin(&ready_list), struct thread, elem);
+  struct thread *cur = thread_current();
+  if (cur->priority < ready->priority)
+  {
+    thread_yield();
+  }
+}
