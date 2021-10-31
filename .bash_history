@@ -1,25 +1,3 @@
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x 12 2   21 123    '
-cd ..
-cd examples/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-make
-make check
-make
-make check
 make
 pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
 make check
@@ -1998,3 +1976,25 @@ gcc project1_20171628_김현우.c
 gcc project1_20171628_김현우.c
 ./a.out
 diff b1.txt b.txt
+cd pintos/src/threads/
+pintos -v -- -q run alarm-multiple
+make
+cd ..
+grep 'list_insert'
+cd threads/
+make
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run alarm-priority
+make
+pintos -v -k -T 60 --qemu  -- -q  run alarm-priority
+make
+pintos -v -k -T 60 --qemu  -- -q  run alarm-priority
+make check
+cd ..
+make clean
+git add --all
+git commit -m "priority change not done!"
+git push

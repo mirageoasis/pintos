@@ -212,8 +212,8 @@ tid_t thread_create(const char *name, int priority,
   t->parent = thread_current();
   intr_set_level(old_level);
 
-  ready_and_running_priorty();
   thread_unblock(t);
+  ready_and_running_priorty(); //우선순위 변화
   return tid;
 }
 
@@ -353,7 +353,8 @@ void thread_foreach(thread_action_func *func, void *aux)
 void thread_set_priority(int new_priority)
 {
   thread_current()->priority = new_priority;
-  ready_and_running_priorty;
+  //refresh_priority();
+  ready_and_running_priorty();
 }
 
 /* Returns the current thread's priority. */
@@ -477,14 +478,17 @@ init_thread(struct thread *t, const char *name, int priority)
   strlcpy(t->name, name, sizeof t->name);
   t->stack = (uint8_t *)t + PGSIZE;
   t->priority = priority;
+  t->init_priority = priority;
   t->magic = THREAD_MAGIC;
   t->exit_status = 0;
   t->load_flag = false;
+
   list_push_back(&all_list, &t->allelem);
   sema_init(&(t->sema_exit), 0);
   sema_init(&(t->sema_wait), 0);
   sema_init(&(t->sema_load), 0);
   list_init(&(t->child)); // child list  initialize
+  list_init(&(t->donations));
 
   for (int i = 0; i < 128; i++)
   {
@@ -650,9 +654,9 @@ unblock 한다.
   }
 }
 
-bool priority_setup(struct list_elem *l, struct list_elem *s, void *aux UNUSED)
+bool priority_setup(struct list_elem *a, struct list_elem *b, void *aux UNUSED)
 {
-  return list_entry(l, struct thread, elem)->priority > list_entry(s, struct thread, elem)->priority;
+  return list_entry(a, struct thread, elem)->priority > list_entry(b, struct thread, elem)->priority;
 }
 
 void ready_and_running_priorty()
