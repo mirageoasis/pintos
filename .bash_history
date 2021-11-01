@@ -1,137 +1,3 @@
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-cd ..
-git add --all
-git commmit "for now"
-git commmit -m "제출 예비"
-git commit -m "제출 예비"
-git push
-make
-cd src
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-make check
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-make check
-make
-make check
-make
-make check
-make
-make check
-make
-make check
-make
-make check
-make
-make check
-git reset
-git rest
-git reset
-make
-MAKE
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-make check
-cd build
-make grade
-vi grade
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-cd ..
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-cd build
-cd ..
-make clean
-git add --all
-git add -m "여기까지는 작동가능"
-git commit  -m "여기까지는 작동가능"
-git push
-cd src/
-cd examples/
-make
-cd ..
-cd userprog/
-make
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-cd ..
-make clean
-git add --all
 git commit -m "무슨원리냐"
 cd src
 cd examples/
@@ -1998,3 +1864,137 @@ make clean
 git add --all
 git commit -m "priority change not done!"
 git push
+cd pintos/
+cd sr
+cd src
+cd threads/
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-donate-one
+make check
+make
+make check
+make
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-preempt
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-sema
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvor
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+pintos -v -k -T 60 --qemu  -- -q  run priority-sema
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-sema
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-sema
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-sema
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-donate-one
+make
+make check
+make
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+pintos -v -k -T 60 --qemu  -- -q  run priority-preempt
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-preempt
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+cd ..
+make clean
+git add --all
+git commit -m "lock semaphore"
+git push
+cd src/
+ls -a
+cd threads/
+make
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+pintos -v -k -T 60 --qemu  -- -q  run priority-lifo
+pintos run -v -- -q run priority-lifo
+pintos -v -k -T 60 --qemu  -- -q  run priority-condvar

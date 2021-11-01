@@ -95,8 +95,10 @@ struct thread
    uint8_t *stack;            /* Saved stack pointer. */
    int init_priority;         /*first priority*/
    int priority;              /* Priority. */
-   struct list_elem allelem;  /* List element for all threads list. */
-   int64_t wake_up_tick;      /*wake up tick*/
+   int nice;
+   int recent_cpu;
+   struct list_elem allelem; /* List element for all threads list. */
+   int64_t wake_up_tick;     /*wake up tick*/
    /* Shared between thread.c and synch.c. */
    struct list_elem elem; /* List element. */
 
@@ -161,8 +163,16 @@ int thread_get_load_avg(void);
 /*project 3*/
 void thread_sleep(int64_t ticks);
 void thread_awake(int64_t ticks);
+void thread_aging(void);
 void ready_and_running_priorty(void);
 bool priority_setup(struct list_elem *l, struct list_elem *s, void *aux UNUSED);
+void mlfqs_priority(struct thread *t);   /* 인자로 주어진 스레드의 priority를 업데이트 */
+void mlfqs_recent_cpu(struct thread *t); /* 인자로 주어진 스레드의 recent_cpu를 업데이트 */
+void mlfqs_load_avg(void);               /* 시스템의 load_avg를 업데이트 */
+void mlfqs_increment(void);              /* 현재 수행중인 스레드의 recent_cpu를 1증가 시킴 */
+void mlfqs_recalc_priority(void);        /* 모든 스레드의 priority */
+void mlfqs_recalc_recent_cpu(void);      /* 모든 스레드의 recent_cpu를 업데이트*/
+
 /*list_push_back 대신하는함수*/
 #endif
 /* threads/thread.h */
