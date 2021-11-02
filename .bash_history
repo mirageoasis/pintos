@@ -1,101 +1,3 @@
-git commit -m "무슨원리냐"
-cd src
-cd examples/
-make
-cd ..
-cd userprog/
-make
-make check
-make grade
-make
-make check
-make grade
-make
-make check
-make grade
-make check
-make
-make check
-make
-make check
-make grade
-make
-cd ..
-make clean
-git add --all
-git commit -m "revolution"
-git push
-cd src/
-cd examples
-cd ..
-cd userprog/
-make
-make check
-make grade
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make check
-make grade
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-cd ..
-make clean
-cd src/
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-cd ..
-make clean
-cd src/
-cd userprog/
-make
-make check
-make
-make check
-make grade
-make check
-make
-cd ..
-cd threads/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-cd ..
-cd threads/
-make
-cd threads/
-cd user
-cd ..
-cd userprog/
-make
-make check
-make grade
-make
-cd ..
-make clean
-git add --all
-git commit -m "새벽은 여기까지"
-git push
-cd..
-cd ..
-cd examples/
-make
-cd pintos
-cd srxc
-cd src
 cd ex
 cd examples/
 make
@@ -1998,3 +1900,101 @@ pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
 pintos -v -k -T 60 --qemu  -- -q  run priority-lifo
 pintos run -v -- -q run priority-lifo
 pintos -v -k -T 60 --qemu  -- -q  run priority-condvar
+cd pintos/src/
+make
+cd threads/
+make
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-lifo
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+pintos -v -k -T 60 --qemu  -- -q  run priority-change2
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-change2
+pintos -v -k -T 60 --qemu  -- -q  run priority-change
+pintos -v -k -T 60 --qemu  -- -q  run priority-change2
+pintos -v -k -T 60 --qemu  -- -q  run priority-change-2
+pintos -v -k -T 60 --qemu  -- -q  run priority-change2
+pintos -v -k -T 60 --qemu  -- -q  run priority-change-2
+pintos -v -k -T 60 --qemu  -- -q  run alarm-negativ3e
+pintos -v -k -T 60 --qemu  -- -q  run alarm-negative
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+make
+make check
+make
+make check
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q  run priority-aging
+make check
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make check
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make check
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make check
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-avg
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-a
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-lifo
+make check
+make
+make check
+make grade
+make check
+make grade
+make check
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-lifo
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-fifo
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-lifo
+cd ..
+make clean
+git add --all
+git commit -m "일단 mlfqs 구현 실패"
+git push

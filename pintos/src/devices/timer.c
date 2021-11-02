@@ -163,10 +163,13 @@ static void
 timer_interrupt(struct intr_frame *args UNUSED)
 {
   ticks++;
+  thread_tick();
   thread_awake(ticks);
+  //thread_aging();
 
-  if (thread_mlfqs)
+  if (thread_prior_aging || thread_mlfqs)
   {
+    //ASSERT(!thread_prior_aging);
     mlfqs_increment();
     if (ticks % 4 == 0)
     {
@@ -174,12 +177,10 @@ timer_interrupt(struct intr_frame *args UNUSED)
     }
     if (ticks % TIMER_FREQ == 0)
     {
-      mlfqs_recalc_recent_cpu();
       mlfqs_load_avg();
+      mlfqs_recalc_recent_cpu();
     }
   }
-
-  thread_tick();
 }
 /* Returns true if LOOPS iterations waits for more than one timer
    tick, otherwise false. */

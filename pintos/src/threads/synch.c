@@ -113,8 +113,7 @@ void sema_up(struct semaphore *sema)
   if (!list_empty(&sema->waiters))
   {
     list_sort(&sema->waiters, priority_setup, 0);
-    thread_unblock(list_entry(list_pop_front(&sema->waiters),
-                              struct thread, elem));
+    thread_unblock(list_entry(list_pop_front(&sema->waiters), struct thread, elem));
   }
   sema->value++;
   ready_and_running_priorty();
@@ -194,15 +193,7 @@ void lock_acquire(struct lock *lock)
   ASSERT(!intr_context());
   ASSERT(!lock_held_by_current_thread(lock));
 
-  // if (lock->holder)
-  // {
-  //   thread_current()->wait_on_lock = lock;
-  //   list_insert_ordered(&lock->holder->donations, &thread_current()->donation_elem, donate_setup_priority, 0);
-  //   donate_priority();
-  // }
-
   sema_down(&lock->semaphore);
-  thread_current()->wait_on_lock = NULL;
   lock->holder = thread_current();
 }
 
@@ -234,9 +225,6 @@ void lock_release(struct lock *lock)
 {
   ASSERT(lock != NULL);
   ASSERT(lock_held_by_current_thread(lock));
-
-  remove_with_lock(lock);
-  //refresh_priority();
 
   lock->holder = NULL;
   sema_up(&lock->semaphore);
@@ -322,9 +310,7 @@ void cond_signal(struct condition *cond, struct lock *lock UNUSED)
   if (!list_empty(&cond->waiters))
   {
     list_sort(&cond->waiters, sema_setup_priority, 0);
-    sema_up(&list_entry(list_pop_front(&cond->waiters),
-                        struct semaphore_elem, elem)
-                 ->semaphore);
+    sema_up(&list_entry(list_pop_front(&cond->waiters), struct semaphore_elem, elem)->semaphore);
   }
 }
 
