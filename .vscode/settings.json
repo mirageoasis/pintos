@@ -35,6 +35,7 @@
         "string.h": "c",
         "vaddr.h": "c",
         "shutdown.h": "c",
-        "interrupt.h": "c"
+        "interrupt.h": "c",
+        "fixed_point.h": "c"
     }
 }

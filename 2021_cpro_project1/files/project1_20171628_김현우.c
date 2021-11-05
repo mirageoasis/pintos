@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int total_car = 0; // 총 출입한 차량수
+int now_car = 0;
 
 int in[1000000];
 int out[1000000];
@@ -36,17 +37,19 @@ void timeput(char *id_string, char *time_string) // 시간 계산하고 in 과 o
         }
     }
 
-    if (dirty_flag == 0)
+    if (dirty_flag == 0 && now_car < 50) // 만약에 주차장 공간에 50대의 차가 있으면 들어온 것으로 기록하지 않는다.
     {
         // in에 기록하는 경우
         in[id] = time;
         total_car++;
+        now_car++;
         //printf("%d time in for id %d\n", time, id); // 디버그문
     }
-    else
+    else if (dirty_flag == 1)
     {
         // out 에 기록하는 경우
         out[id] = time;
+        now_car--;
         //printf("%d time out for id %d\n", time, id); // 디버그문
     }
 }

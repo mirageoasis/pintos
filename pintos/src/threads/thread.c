@@ -408,7 +408,7 @@ int thread_get_load_avg(void)
   enum intr_level old_level;
 
   old_level = intr_disable();
-  int ret = fp_to_int(mult_mixed(load_avg, 100));
+  int ret = fp_to_int_round(mult_mixed(load_avg, 100));
   intr_set_level(old_level);
   return ret;
 }
@@ -418,9 +418,10 @@ int thread_get_recent_cpu(void)
 {
   enum intr_level old_level;
 
-  old_level = intr_disable();
+  //old_level = intr_disable();
+  //printf("%d %d %d\n", thread_current()->recent_cpu, mult_mixed(thread_current()->recent_cpu, 100), fp_to_int(mult_mixed(thread_current()->recent_cpu, 100)));
   int ret = fp_to_int(mult_mixed(thread_current()->recent_cpu, 100));
-  intr_set_level(old_level);
+  //intr_set_level(old_level);
   return ret;
 }
 
@@ -742,7 +743,6 @@ void mlfqs_recent_cpu(struct thread *t)
 {
   /* 해당 스레드가 idle_thread 가 아닌지 검사 */
   /*recent_cpu계산식을 구현 (fixed_point.h의 계산함수 이용)*/
-
   if (thread_current() != idle_thread)
     t->recent_cpu = add_mixed(mult_fp(div_fp(mult_mixed(load_avg, 2), add_mixed(mult_mixed(load_avg, 2), 1)), t->recent_cpu), t->nice);
 }
@@ -755,6 +755,7 @@ void mlfqs_load_avg(void)
 
   if (thread_current() != idle_thread)
     ready_size++;
+
   load_avg = div_mixed(add_mixed(mult_mixed(load_avg, 59), ready_size), 60);
 }
 
@@ -764,6 +765,7 @@ void mlfqs_increment(void)
   /* 현재 스레드의 recent_cpu 값을 1증가 시킨다. */
   if (thread_current() != idle_thread)
     thread_current()->recent_cpu = add_mixed(thread_current()->recent_cpu, 1);
+  //printf("the recent cpu is %d!\n", thread_current()->recent_cpu);
 }
 
 void mlfqs_recalc_recent_cpu(void)
@@ -803,10 +805,12 @@ void mlfqs_recalc_priority(void)
 
 int max_priority()
 {
+  int priority = -1;
   struct thread *temp;
   if (!list_empty(&ready_list))
   {
     temp = list_entry(list_front(&ready_list), struct thread, elem);
-    return temp->priority;
+    priority = temp->priority;
   }
+  return priority;
 }

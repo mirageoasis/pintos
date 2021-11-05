@@ -1,182 +1,3 @@
-cd ex
-cd examples/
-make
-cd ../threads/
-maek
-make
-cd ../examples/
-make
-cd ../userprog/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-cd ../..
-make clean
-cd src/
-cd examples/
-make
-cd ../userprog/
-cd ../threads/
-make
-cd ../userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-make check
-make grade
-make
-make check
-make grade
-cd ..
-make clean
-git add --all
-git commit -m "시스템콜 수정전"
-git push
-cd src
-cd examples/
-make
-cd ..
-cd threads/
-make
-cd ../examples/
-make
-cd ..
-cd userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-mmake
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-make'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-make
-pintos --filesys-size=2 -p ../examples/echo -a echo -- -f -q run 'echo x'
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-cd pintos/src/userprog/
-make check
-make grade
-make
-make check
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make check
-make grade
-cd ../..
-make clean
-git add --all
-git commit -m "fin?"
-git push
-cd src/
-cd examples/
-make
-cd ..
-cd examples/
-cd ../threads/
-make
-cd ../userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-git reset
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -f -q run 'additional 10 20 62 40'
-cd pintos/
-cdmod -R +x src
-chmod -R +x src
-cd src
-cd examples/
-make
-cd ../threads/
-make
-cd ../examples/
-make
-cd ../userprog/
-make
-cd ..
-cd pintos/
-make clean
-git add -all
-git add --all
-git commit -m "proj1 finish!"
-git push
-cd src/
-cd userprog/
-make check
-cd pintos/
-cd src/examples/
-make
-cd ../userprog/
-make
-cd ../threads/
-make
-cd ../userprog/
-make
 make check
 ls -a
 make check
@@ -1998,3 +1819,182 @@ make clean
 git add --all
 git commit -m "일단 mlfqs 구현 실패"
 git push
+cd pintos/src/
+cd userprog/
+make
+cd ..
+make
+make check
+cd threads/
+make
+make check
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make check
+make
+make check
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-load-1
+make check
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-cond-wait
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-condvar
+make
+make check
+make
+make check
+make
+make check
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-condvar
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-cond-wait
+make check
+make
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-lifo
+pintos -v -k -T 60 --qemu  -- -q  run priority-fifo
+pintos -v -k -T 60 --qemu  -- -q  run priority-lifo
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-condvar
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run priority-condvar
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make check
+make 
+ㅡ맏
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+pintos -v -k -T 60 --qemu  -- -q -aging run priority-aging
+make
+make check
+make
+make check
+make grade
+make check
+cd ..
+cd..
+cd ..
+make clean
+git add --all
+git commit -m "almost there except recent-1"
+git push
+npm install
+sudo apt install npm
+cd workspace/
+npm install
+npm start
+ls -a
+mkdir react-todolist-student
+ls -a
+cd react-todolist-student/
+npm install
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+npm start
+npm install
+npm init
+npm install
+npm start
+npm install
+cd workspace/react-todolist-student/
+npm init
+npm start
+npm run start
+npm install
+npm start
+npm install
+npm init
+cd ..
+cd react-todolist-student/
+npm start
+npm init
+npm start
+cd ..
+cd react-todolist-student/
+ls -a
+npm init
+npm start
+node -v
+npm -v
+npm start
+npm -v
+npm install
+npm start
+npm install
+npm start
+ls -a
+gcc
+cd workspace/
+ls -a
+cd react-todolist-student/
+ls -a
+npm start
+npm init
+npm start
+npm run
+npm install
+npm start
+cd ..
+ls -a
+cd react-todolist-student/
+npm install
+npm start
+cd ..
+create-react-app 
+node -v
+npm -v
+create react app
+cd react-todolist-student/
+ls -a
+npm install
+npm start
+cd pintos/
+cd src/
+cd threads/
+make
+make check
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+make check
+ls -a
+.code
+.vs
+.code
+cd pintos/

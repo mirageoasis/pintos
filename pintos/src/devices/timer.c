@@ -171,11 +171,11 @@ timer_interrupt(struct intr_frame *args UNUSED)
   {
     //ASSERT(!thread_prior_aging);
     mlfqs_increment();
-    if (ticks % 4 == 0)
+    if (timer_ticks() % 4 == 0)
     {
       mlfqs_recalc_priority();
     }
-    if (ticks % TIMER_FREQ == 0)
+    if (timer_ticks() % TIMER_FREQ == 0)
     {
       mlfqs_load_avg();
       mlfqs_recalc_recent_cpu();
