@@ -40,6 +40,9 @@
 
 /* Page directory with kernel mappings only. */
 uint32_t *init_page_dir;
+extern bool thread_prior_aging;
+extern bool thread_mlfqs;
+bool thread_started;
 
 #ifdef FILESYS
 /* -f: Format the file system? */
@@ -116,6 +119,7 @@ int main(void)
 
   /* Start thread scheduler and enable interrupts. */
   thread_start();
+  //thread_started = true;
   serial_init_queue();
   timer_calibrate();
 

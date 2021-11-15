@@ -4,12 +4,13 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include <hash.h>
 #include "threads/synch.h"
 
 /* Project #3 */
-#ifndef USERPROG
 extern bool thread_prior_aging;
-#endif
+extern bool thread_mlfqs;
+extern bool thread_started;
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -121,6 +122,8 @@ struct thread
    struct list donations;
    struct list_elem donation_elem;
 
+   /*proj4*/
+   struct hash vm;
    /* Owned by thread.c. */
    unsigned magic; /* Detects stack overflow. */
 };
@@ -128,7 +131,6 @@ struct thread
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
    Controlled by kernel command-line option "-o mlfqs". */
-extern bool thread_mlfqs;
 
 void thread_init(void);
 void thread_start(void);
@@ -165,7 +167,7 @@ int thread_get_load_avg(void);
 void thread_sleep(int64_t ticks);
 void thread_awake(int64_t ticks);
 void thread_aging(void);
-void ready_and_running_priorty(void);
+void ready_and_running_priority(void);
 bool priority_setup(struct list_elem *l, struct list_elem *s, void *aux UNUSED);
 void mlfqs_priority(struct thread *t);   /* 인자로 주어진 스레드의 priority를 업데이트 */
 void mlfqs_recent_cpu(struct thread *t); /* 인자로 주어진 스레드의 recent_cpu를 업데이트 */
