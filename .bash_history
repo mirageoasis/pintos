@@ -1,473 +1,3 @@
-make check
-ls -a
-make check
-make
-make check
-cd pintos/src/
-cd userprog/
-ls =a
-ls -a
-cd pintos/src/userprog/
-make
-make check
-mmake
-make
-make check
-make grade
-cd pintos/src/userprog/
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-makde
-make
-makde
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-make
-pintos --filesys-size=2 -p ../examples/additional -a additional -- -q -f extract run create-normal
-pintos --filesys-size=2 -p ../examples/create-normal -a create-normal -- -q -f extract run create-normal
-pintos --filesys-size=2 -p ../tests/create-normal -a create-normal -- -q -f extract run create-normal
-pintos --filesys-size=2 -p ../tests/userprog/create-normal -a create-normal -- -q -f extract run create-normal
-make
-cd ..
-cd examples/
-make
-cd ../userprog/
-cd build/
-pintos -v -k -T 300 --qemu  --filesys-size=2 -p tests/filesys/base/syn-read -a syn-read -p tests/filesys/base/child-syn-read -a child-syn-read -- -q  -f run syn-read < /dev/null 2> tcreate-normalsys/base/syn-read.errors > tests/filesys/base/syn-read.output
-perl -I../.. ../../tests/filesys/base/syn-read.ck tests/filesys/base/syn-read tests/filesys/base/syn-read.result
-cd ..
-make
-make check
-make
-make check
-make clean
-make
-make check
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p ../tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-make check
-cd ..
-cd userprog/
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-cd ..
-make
-cd build/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/create-normal -a create-normal -- -q  -f run create-normal
-cd ..
-make
-make check
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make check
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make grade
-cd ..
-make grade
-make check
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-empty -a open-empty  -- -q  -f run open-empty
-cd ..
-make check
-make
-make check
-make grade
-make check
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/rread-normal -a oread-normal-- -q  -f run  read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a oread-normal-- -q  -f run  read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal-- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make check
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd build/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-cd ..
-cd user
-cd userprog/
-make
-cd build/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-cd ../../..
-make clean
-git add --all
-git commit -m "read 구현 남음"
-git push
-cd src/examples/
-make
-cd ../threads/
-make
-cd ../userprog/
-make
-make check
-cd build/
-make
-cd ..
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-naje
-make
-naje
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-cd pintos/src/userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-missing -a open-missing -- -q  -f run open-missing
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/read-normal -a read-normal -- -q  -f run read-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd pintos/src/user
-cd pintos/src/userprog/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd build/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make check
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ../../tests/
-ls -a
-cd userprog/
-ls -l
-chmod +w sample.txt
-cd ..
-cd pintos/src/userprog/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make clean
-git add --all
-git commit -m "일단 open쪽 filesys가 문제다!"
-git push
-cd src/
-cd userprog/
-cd bu
-make
-cd ..
-cd examples/
-make
-cd ../userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-git reset
-cd ..
-git reset
-cd ..
-cd pintos/
-cd sr
-cd src
-cd examples/
-make
-cd ..
-cd userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-cd chmod +rwx src
-cd chmod -R +rwx src
-cd chmod -R 777 src
-chmod -R +rwx src
-cd src/
-cd userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-chmod -R +rw pintos/
-cd pintos/
-cd ..
-chmod -
-chmod -R +rx pintos
-cd pintos/src/userprog/
-make
-cd ..
-cd examples/
-make
-cd ..
-cd userprog/build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-make
-cd ../examples/
-make
-cd ../userprog/
-cd build/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-chmod -R +rx pintos
-cd ..
-chmod -R +rx pintos
-cd pintos/src/userprog/
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd pintos/src/examples/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ../userprog/
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-name
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-cd ..
-cd filesys/
-make
-cd ../userprog/build/
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-cd ../../tests/
-make
-cd ../userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-cd ../filesys/
-make
-cd ../userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-chmod -
-chmod -R +rx pintos
-cd pintos/src/
-cd examples/
-make
-cd ../threads/
-make
-cd ../userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-cd ../threads/
-make
-cd ../userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd 
-cd pintos/
-chmod -R +rw src/
-ls 0l
-ls -l
-cd src/examples/
-make
-cd ../threads/
-make
-cd ../userprog/
-make
-cd ..
-cd utils/
-gdb pintos-gdb
-cd ..
-cd src/userprog/
-make
-cd build/
-cd ..
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-cd ..
-chmod -R +x pintos
-chmod -R +x src
-ls -l
-cd src/
-cd userprog/
-make
-cd build/
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
-make
-pintos -v -k -T 60 --qemu --filesys-size=2 -p tests/userprog/open-normal -a open-normal -- -q  -f run open-normal
 cd ..
 git reset
 make clean
@@ -1998,3 +1528,473 @@ ls -a
 .vs
 .code
 cd pintos/
+cd pintos/src/threads/
+make
+pintos -v -k -T 480 --qemu  -- -q priority-lifo
+pintos -v -k -T 60 --qemu  -- -q  run priority-lifo
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+mak3e
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+mlake
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make check
+make
+pintos -v -k -T 480 --qemu  -- -q -mlfqs run mlfqs-recent-1 
+make check
+make grade
+make check
+cd ..
+make clean
+git add --all
+git commit -m "project 3 fin!"
+git push
+cd ..
+cd 2021_cpro_project1/
+cd ..
+cd 2021_cpro_project1/
+cd files/
+gcc project1_20171628_김현우.c 
+./a.out
+gcc project1_20171628_김현우.c 
+./a.out
+cd p
+cd pintos/
+cd src/threads/
+make check
+cd ..
+cd userprog/
+make
+make check
+make
+cd ..
+cd threads/
+make check
+cd ..
+cd userprog/
+make
+make check
+make
+make check
+make
+make check
+make
+cd..
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+cd ..
+cd threads/
+make
+cd ..
+cd userprog/
+make
+cd pintos/src/
+ls -a
+cd vm
+make
+make check
+cd ..
+cd threads/
+make check
+cd ../userprog/
+make
+make check
+cd ../vm/
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+cd ..
+ls -a
+cd utils/
+make check
+make
+cd ..
+cd devices/
+make
+cd ..
+cd filesys/
+make
+make check
+cd ..
+cd threads/
+make check
+cd ../vm/
+make check
+make
+make check
+make
+make check
+cd ..
+cd..
+make clean
+cd vm/
+make check
+mAKE
+MAKE
+make
+make check
+make
+make check
+cd pintos/src/vm/
+make
+cd pintos/src/vm/
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+cd ..
+cd threads/
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+git reset
+make check
+cd ..
+chmod -R +r+x src
+ls -l
+cd src
+cd thread
+ls -a
+cd threads
+make check
+cd .
+cd ..
+cd vm
+make check
+make
+cd ..
+cd threads
+make check
+cd pintos
+cd src
+cd vm
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+make
+make clean
+make
+make check
+cd ..
+cd threads
+make
+make check
+cd ..
+cd vm
+make
+make check
+backtraces
+backtrace
+backtrace kernel.o
+backtrace kernel.o 0x795f6461
+
+make check
+make
+make check
+make
+make check
+cd ..
+cd threads
+make check
+make
+make check
+cd ../vm
+make check
+cd ..
+cd threads
+make check
+make
+make check
+cd ..
+cd vm
+make check
+kernel.o
+backtrace kernel.o 0x795f6461
+backtrace 0x795f6461
+make check
+cd ..
+cd threads
+make check
+MAKE
+make
+make check
+make
+make check
+cd.. /userprog
+cd ..
+cd userprog
+cd build
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none 
+cd pintos/
+cd src
+cd threads/
+make
+make check
+cd pintos/
+cd src/
+cd userprog/
+make check
+make
+make check
+make
+make cehck
+make
+make check
+make
+make check
+make
+make check
+make
+make check
+.code
+.vscode
+.codd
+$HOME
+.code
+code .
+cd react-chat-app-8week-student/
+npm init
+npm start
+npm install
+npm start
+ls -a
+cd ..
+ls -a
+cd react-chat-app-8week-student/
+npm install
+npm init
+npm start
+npm init
+npm start
+npm end
+npm start
+cd react-chat-app-8week-student/
+npm init
+npm install
+npm start
+npm exit
+npm end
+npm start
+npm exit
+npm --help
+npm clear
+cd ..
+cd react-chat-app-8week-student/
+npm uninstall
+npm list
+npm uninstall -g
+ls -a
+cd ..
+cd pintos/src/
+cd vm
+make
+make check
+cd ..
+cd threads/
+make
+make check
+cd ..
+cd userprog/
+make check
+git reset
+make check
+make
+make check
+cd build/
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none
+make check
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none 
+make
+make check
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none
+make check
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none 
+make
+make check
+make
+pintos -v -k -T 60 --qemu  --filesys-size=2 -p tests/userprog/args-none -a args-none -- -q  -f run args-none 
+make check
+cd ../..
+cd threads/
+make check
+cd ..
+cd userprog/
+make
+make check
+cd ..
+cd threads/
+make check
+cd ..
+cd userprog/
+make check
+cd ..
+cd threads/
+make check
+cd ..
+cd userprog/
+make check
+cd ..
+cd threads/
+make check
+cd ..
+cd userprog/
+make check
+cd ..
+cd thread
+cd threads
+make check
+cd ..
+cd userprog
+make check
+cd ..
+cd threads
+make check
+cd ..
+cd user
+cd userprog
+make check
+cd ..
+cd threads
+make check
+cd ..
+cd userprog
+make check
+cd ..
+cd thread
+cd threads
+make check
+cd ..
+cd userprog
+make check
+cd ..
+cd thread
+cd threads
+make check
+cd ..
+cd userprog
+make check
+code ./
+cd pintos/src/
+cd pintos/
+cd src/
+cd threads/
+make
+make check
+cd ..
+cd userprog/
+cd ..
+cd vm
+make
+make check
+cd ..
+make clean
+git status
+git add -A
+git status
+git reset HEAD
+git add .
+git status
+git commit -m "safety before load_seg"
+git push
+cd ..
+cd pintos/src/vm/
+cd react-chat-app-9week-student/
+cd react-chat-app-9week-student/
+npm install
+npm start
+npm init
+npm start
+cd ..
+npm install
+npm start
+cd ..
+cd react-chat-app-9week-student/
+npm install
+npm start
+npm init
+npm start
+cd web
+npm start
+npm install
+npm start
+cd react-chat-app-9week-student/
+cd web
+npm start
+port=8001 npm start
+PORT=8001 npm start
+cd ..
+cd server/
+npm install
+npm init
+mpn start
+npm install
+npm start
+cd react-chat-app-9week-student/
+cd web/
+npm start
+npm install
+npm start
+cd react-chat-app-9week-student/
+cd server/
+npm start
+cd react-chat-app-9week-student/
+cd server/
+npm start
+cd react-chat-app-9week-student/
+cd web/
+npm start
+cd ..
+code .

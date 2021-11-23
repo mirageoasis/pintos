@@ -481,6 +481,10 @@ load_segment(struct file *file, off_t ofs, uint8_t *upage,
     size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
     size_t page_zero_bytes = PGSIZE - page_read_bytes;
 
+    /* vm_entry 생성 (malloc 사용) */
+    /* vm_entry 멤버들 설정, 가상페이지가 요구될 때 읽어야할 파일의 오프셋과 사이즈, 마지막에 패딩할 제로 바이트 등등 */
+    /* insert_vme() 함수를 사용해서 생성한 vm_entry를 해시테이블에 추가 */
+
     /* Get a page of memory. */
     uint8_t *knpage = palloc_get_page(PAL_USER);
     if (knpage == NULL)

@@ -36,6 +36,10 @@
         "vaddr.h": "c",
         "shutdown.h": "c",
         "interrupt.h": "c",
-        "fixed_point.h": "c"
-    }
+        "fixed_point.h": "c",
+        "pit.h": "c",
+        "synch.h": "c",
+        "hash.h": "c"
+    },
+    "git.ignoreLimitWarning": true
 }

@@ -7,4 +7,5 @@
 .bashrc
 .profile
 .viminfo
-
+.npm
+.cache

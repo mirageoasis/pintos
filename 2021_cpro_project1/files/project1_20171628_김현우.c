@@ -8,7 +8,18 @@ int out[1000000];
 int money[1000000];
 int money2[1000000];
 
-void timeput(char *id_string, char *time_string) // 시간 계산하고 in 과 out 에 각각 시간 기록
+/*
+*    This function calculate time and record time on "in"array or "out"array depend on the situation
+*     @param
+*    - *id_string : The string contaning information about id (six digits)
+*    - *time_string : The string contaning information about time (the format is xx:xx:xx)
+*    - value : The value to search for
+*     
+*    @retern
+*    void
+*/
+
+void timeput(char *id_string, char *time_string)
 {
     int cnt = 0;
     int id = 0;
@@ -22,10 +33,8 @@ void timeput(char *id_string, char *time_string) // 시간 계산하고 in 과 o
         id += id_string[i] - '0';
     }
 
-    if (in[id] != -1) // 만약에 이미 들어온 차량이면 dirty bit를 1로 설정한다.
+    if (in[id] != -1) // if its already in set dirty_flag to 1
         dirty_flag = 1;
-
-    //시간기록
 
     for (int i = 0; i < 8; i++)
     {
@@ -37,32 +46,44 @@ void timeput(char *id_string, char *time_string) // 시간 계산하고 in 과 o
         }
     }
 
-    if (dirty_flag == 0 && now_car < 50) // 만약에 주차장 공간에 50대의 차가 있으면 들어온 것으로 기록하지 않는다.
-    {
-        // in에 기록하는 경우
+    if (dirty_flag == 0 && now_car < 50) // if you record on "in"array
+    {                                    //if there are 50 cars in parking lot you dont accept the entrance
         in[id] = time;
         total_car++;
         now_car++;
-        //printf("%d time in for id %d\n", time, id); // 디버그문
     }
-    else if (dirty_flag == 1)
+    else if (dirty_flag == 1) // if you record on "out" array
     {
-        // out 에 기록하는 경우
         out[id] = time;
         now_car--;
-        //printf("%d time out for id %d\n", time, id); // 디버그문
     }
 }
 
+/*
+*    This function translate time into minute whose id is parameter(id)
+*     @param
+*    - id : the id you want to calculate minute spent on parking lot
+*  
+*    @retern
+*    the function returns the accoding to the calculation result according to formula (day * 60 * 24 + hour * 60 + minute)
+*/
 int minCal(int id) //
 {
-    int day = (out[id] / 10000) - (in[id] / 10000);              // 10000으로 나눠서 지난 일 구한다
-    int hour = (out[id] % 10000 / 100) - (in[id] % 10000 / 100); // 10000의 나머지를 구하고 100의 몫을 구한다 (시간이 나옴)
-    int minute = (out[id] % 100) - (in[id] % 100);               // 100의 몫을 구한다 (분이 나옴)
+    int day = (out[id] / 10000) - (in[id] / 10000);              // divide by 10000 and get quoient which is day
+    int hour = (out[id] % 10000 / 100) - (in[id] % 10000 / 100); // get the remainder of 10000 and divide remainder 100 to get quoient which is minute
+    int minute = (out[id] % 100) - (in[id] % 100);               // get quoient divied by 100 to get minute
     return day * 60 * 24 + hour * 60 + minute;
 }
 
-int cashCal(int minute) // 돈 계산 해주는 함수
+/*
+*    This function 
+*     @param
+*    - minute : the minute you spent on parkinglot
+*  
+*    @retern
+*    if minute is bigger than 3days (a.k.a penalty_hour * 60 ) you add 15000 won on the result and return 
+*/
+int cashCal(int minute)
 {
     int penalty = 15000;
     int penalty_hour = 72;
@@ -78,7 +99,15 @@ int cashCal(int minute) // 돈 계산 해주는 함수
     }
 }
 
-void upper_sort() // money2에서 돈의 순서에 따른  swap
+/*
+*    this funcion sort the money2 into sorted array by int value using bubble sort
+*     @param
+*    -  none 
+*  
+*    @retern
+*    none
+*/
+void upper_sort()
 {
     for (int i = 0; i < total_car; i++)
     {
@@ -99,15 +128,15 @@ int main()
     FILE *fp_r;
     FILE *fp_w;
 
-    char id[7];         // 파일 문자열을 받는 배열
-    char time[8];       //시간 받는 문자열
-    int money2_cnt = 0; // money2 기록용 변수
+    char id[7];         // for id string
+    char time[8];       //for time string
+    int money2_cnt = 0; // money2 recording variable
 
     for (int i = 0; i < 1000000; i++)
     {
         in[i] = -1;
         out[i] = -1;
-        money[i] = -1; // 누가 아예 오지 않았는지 구분가능함
+        money[i] = -1; // can distinguish who have not came
         money2[i] = 0;
     }
 
@@ -128,25 +157,25 @@ int main()
         timeput(id, time);
     }
 
-    for (int i = 0; i < 1000000; i++) //차량 입출입 시간 계산하고(시간단위) id를 받아서 그 거에 돈 곱해서 money 값에 넣어 준다.
+    for (int i = 0; i < 1000000; i++) //translate minute into money and record money one have to pay into money and money2 array
     {
-        if (in[i] != -1) // 출입 기록이 존재한다면
+        if (in[i] != -1) // if you are in the parking lot
         {
-            int minute = minCal(i);                 // 분단위 계산
-            money[i] = cashCal(minute);             // 돈 계산
-            money2[money2_cnt++] = cashCal(minute); // 돈계산
+            int minute = minCal(i);                 // minute calculation
+            money[i] = cashCal(minute);             // money calculation
+            money2[money2_cnt++] = cashCal(minute); // money calculation for sorting
             //printf("id %d : %d won \n", i, cashCal(minute));
         }
     }
 
-    upper_sort(); // 금액 순서대로 배열
+    upper_sort(); // sorting based on money
 
     // for (int i = 0; i < total_car; i++)
     // {
     //     printf("%d\n", money2[i]);
     // }
 
-    //그 시간순으로 해당 id를 찾아서 파일에 입력(파일 입력 구현하기 전에 걍 콘솔에 띄우자 그냥 ㅇㅇ)
+    //finding id based on the cash that id have to pay
 
     for (int i = 0; i < total_car; i++)
     {
