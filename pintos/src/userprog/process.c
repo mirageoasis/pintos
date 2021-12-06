@@ -18,7 +18,6 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "lib/stdio.h"
-#include "vm/page.h"
 
 static thread_func start_process NO_RETURN;
 static bool load(const char *cmdline, void (**eip)(void), void **esp);
@@ -44,8 +43,11 @@ tid_t process_execute(const char *file_name)
   strlcpy(fn_copy, file_name, PGSIZE);
   strlcpy(temp, file_name, PGSIZE); //복사본 만들어 놓기
   cmd = strtok_r(temp, " ", &dummy_ptr);
+  //printf("the file_name of cmd in process_execute is! %s\n", file_name);
   if (filesys_open(cmd) == NULL)
   {
+    //ASSERT(filesys_open(cmd));
+    //printf("There is no such file\n");
     return -1;
   }
   /* Create a new thread to execute FILE_NAME. */
@@ -78,9 +80,6 @@ start_process(void *file_name_)
   struct intr_frame if_;
   bool success;
   /* Initialize interrupt frame and load executable. */
-  /*proj4*/
-  vm_init(&thread_current()->vm);
-  /*proj4*/
   memset(&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
@@ -92,8 +91,10 @@ start_process(void *file_name_)
   palloc_free_page(file_name);
   if (!success)
   {
+    thread_current()->load_flag = false;
     exit(-1);
   }
+  thread_current()->load_flag = true;
 
   /* Start the user process by simulating a return from an
      interrupt, implemented by intr_exit (in
@@ -123,6 +124,8 @@ int process_wait(tid_t child_tid UNUSED)
   struct thread *cur = thread_current();
   int exit_status = -1;
 
+  struct list_elem *e;
+  struct thread *t = NULL;
   //printf("this is process wait!\n");
 
   if (child_thread == NULL)
@@ -146,9 +149,11 @@ void process_exit(void)
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
-  vm_destroy(&cur->vm);
 
   pd = cur->pagedir;
+
+  sema_up(&(thread_current()->sema_wait));
+  sema_down(&(thread_current()->sema_exit));
 
   if (pd != NULL)
   {
@@ -163,8 +168,6 @@ void process_exit(void)
     pagedir_activate(NULL);
     pagedir_destroy(pd);
   }
-  sema_up(&(thread_current()->sema_wait));
-  sema_down(&(thread_current()->sema_exit));
 }
 
 /* Sets up the CPU for running user code in the current
@@ -480,10 +483,6 @@ load_segment(struct file *file, off_t ofs, uint8_t *upage,
          and zero the final PAGE_ZERO_BYTES bytes. */
     size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
     size_t page_zero_bytes = PGSIZE - page_read_bytes;
-
-    /* vm_entry 생성 (malloc 사용) */
-    /* vm_entry 멤버들 설정, 가상페이지가 요구될 때 읽어야할 파일의 오프셋과 사이즈, 마지막에 패딩할 제로 바이트 등등 */
-    /* insert_vme() 함수를 사용해서 생성한 vm_entry를 해시테이블에 추가 */
 
     /* Get a page of memory. */
     uint8_t *knpage = palloc_get_page(PAL_USER);

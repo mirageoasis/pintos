@@ -64,8 +64,6 @@ userprog_SRC += userprog/tss.c		# TSS management.
 # No virtual memory code yet.
 #vm_SRC = vm/file.c			# Some file.
 
-vm_SRC  = vm/page.c
-
 # Filesystem code.
 filesys_SRC  = filesys/filesys.c	# Filesystem core.
 filesys_SRC += filesys/free-map.c	# Free sector bitmap.
@@ -73,6 +71,7 @@ filesys_SRC += filesys/file.c		# Files.
 filesys_SRC += filesys/directory.c	# Directories.
 filesys_SRC += filesys/inode.c		# File headers.
 filesys_SRC += filesys/fsutil.c		# Utilities.
+filesys_SRC += filesys/buffer_cache.c #new for prj5
 
 SOURCES = $(foreach dir,$(KERNEL_SUBDIRS),$($(dir)_SRC))
 OBJECTS = $(patsubst %.c,%.o,$(patsubst %.S,%.o,$(SOURCES)))
